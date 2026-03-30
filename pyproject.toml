@@ -1,0 +1,21 @@
+[project]
+name = "de-work"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastexcel>=0.19.0",
+    "ipykernel>=7.2.0",
+    "jupyter>=1.1.1",
+    "numpy>=2.4.3",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.1",
+    "polars>=1.38.1",
+    "pyarrow>=23.0.1",
+    "rapidfuzz>=3.14.3",
+    "scikit-learn>=1.8.0",
+    "scipy>=1.17.1",
+    "tqdm>=4.67.3",
+    "xlsxwriter>=3.2.9",
+]

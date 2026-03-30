@@ -1,0 +1,12 @@
+numpy
+pandas
+scipy
+ipykernel
+openpyxl    
+rapidfuzz
+polars
+tqdm
+pyarrow
+fastexcel
+xlsxwriter
+jupyter
