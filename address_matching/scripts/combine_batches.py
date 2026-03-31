@@ -76,7 +76,7 @@ def default_input_dir() -> Path:
 
 
 def default_output_path(input_dir: Path) -> Path:
-    return input_dir / "combined_unmatched_address_pipeline.xlsx"
+    return input_dir / "combined_verified_address_pipeline_part2.xlsx"
 
 
 def parse_args() -> argparse.Namespace:
