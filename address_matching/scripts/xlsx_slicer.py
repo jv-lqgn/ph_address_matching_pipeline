@@ -6,7 +6,13 @@ from pathlib import Path
 
 import polars as pl
 
-# si bon to
+def read_table(path: Path) -> pl.DataFrame:
+    suffix = path.suffix.lower()
+    if suffix == ".csv":
+        return pl.read_csv(path)
+    if suffix in {".xlsx", ".xls"}:
+        return pl.read_excel(path)
+    raise ValueError(f"Unsupported file type: {suffix}")
 
 
 def resolve_excel_path(excel_name: str, project_root: Path) -> Path:
@@ -25,7 +31,7 @@ def resolve_excel_path(excel_name: str, project_root: Path) -> Path:
 	)
 
 
-def split_excel_to_chunks(excel_path: Path, sample_dir: Path, chunk_size: int = 1000) -> list[Path]:
+def split_excel_to_chunks(excel_path: Path, sample_dir: Path, chunk_size: int = 10000) -> list[Path]:
 	if chunk_size <= 0:
 		raise ValueError("chunk_size must be greater than 0")
 
