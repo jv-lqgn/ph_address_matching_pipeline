@@ -62,7 +62,7 @@ def split_excel_to_chunks(excel_path: Path, sample_dir: Path, chunk_size: int = 
 
 def parse_args() -> argparse.Namespace:
 	parser = argparse.ArgumentParser(
-		description="Split an Excel file into smaller Excel files (default: 1000 rows each)."
+		description="Split an Excel file into smaller Excel files"
 	)
 	parser.add_argument(
 		"excel_name",
