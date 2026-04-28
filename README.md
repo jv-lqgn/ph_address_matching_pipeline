@@ -7,12 +7,14 @@ Real-world Philippine address data is often messy — inconsistent abbreviations
 The pipeline is built around a Jupyter Notebook workflow (recommended) with an optional `main.py` script entry point. It is designed to run entirely locally — no external APIs or cloud services required.
 
 ---
-Features
+Overview
+---
 Hierarchical fuzzy matching across barangay → city → province → region
 Alias/abbreviation normalization via a configurable alias rules CSV
 Batch processing with configurable input paths
 Categorized output: matched results are separated from unmatched ones, with reason-based subfolders
 Utility scripts for combining outputs and slicing large files into test batches
+
 ---
 Note: The data/ folder is not included in this repository. You must manually download it from the shared OneDrive link and place it under address_matching/data/ before running the pipeline. The folder should contain the input/, mapping/, output/, and utils/ subdirectories.
 ---
