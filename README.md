@@ -106,7 +106,7 @@ source .venv/bin/activate
 
 1. Open the notebook:
    ```
-   address_matching/notebooks/optimized_address_pipeline.ipynb
+   address_matching/notebooks/ph_address_pipeline.ipynb
    ```
 2. Ensure the selected kernel points to `.venv`.
 3. Configure your input file paths in **Cell 2** (`input_paths`).
@@ -126,8 +126,8 @@ The pipeline expects the following input files to be present:
 
 | File | Description |
 |------|-------------|
-| `address_matching/data/utils/ph_address_alias_extended_v3.csv` | Alias and abbreviation normalization rules |
-| `address_matching/data/mapping/dim_location_20260316_v2.csv` | Canonical location mapping (barangay → city → province → region) |
+| `address_matching/data/utils/ph_address_alias_extended_v6.csv` | Alias and abbreviation normalization rules |
+| `address_matching/data/mapping/dim_location_20260421.csv` | Canonical location mapping (barangay → city → province → region) |
 | Batch input files | Configured in notebook Cell 2 via `input_paths` |
 
 ---
