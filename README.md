@@ -1,4 +1,4 @@
-# 🇵🇭 Philippine Address Matching Pipeline
+# Philippine Address Matching Pipeline
 
 A locally-run batch pipeline that standardizes and validates unstructured Philippine addresses. It takes raw address text as input and outputs structured, validated records with **barangay**, **city/municipality**, **province**, and **region** fields resolved.
 
