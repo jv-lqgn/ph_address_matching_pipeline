@@ -63,11 +63,14 @@ python main.py
 ```
 ---
 Inputs
+---
+
 The pipeline expects the following input files to be present:
 File	Description
 `address_matching/data/utils/ph_address_alias_extended_v3.csv`	Alias and abbreviation normalization rules
 `address_matching/data/mapping/dim_location_20260316_v2.csv`	Canonical location mapping (barangay → city → province → region)
 Batch input files	Configured in notebook Cell 2 via `input_paths`
+
 ---
 Outputs
 Processed records are written to:
