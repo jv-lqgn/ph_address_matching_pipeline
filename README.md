@@ -2,9 +2,10 @@ Philippine Address Matching Pipeline
 A locally-run batch pipeline that standardizes and validates unstructured Philippine addresses. It takes raw address text as input and outputs structured, validated records with barangay, city/municipality, province, and region fields resolved.
 ---
 Overview
-
+---
 Real-world Philippine address data is often messy — inconsistent abbreviations, misspellings, missing components, or non-standard formats. This pipeline resolves those issues using hierarchical fuzzy matching and alias normalization, producing clean, structured address records suitable for analytics, reporting, or database ingestion.
 The pipeline is built around a Jupyter Notebook workflow (recommended) with an optional `main.py` script entry point. It is designed to run entirely locally — no external APIs or cloud services required.
+
 ---
 Features
 Hierarchical fuzzy matching across barangay → city → province → region
