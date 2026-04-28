@@ -1,0 +1,37 @@
+============================================================
+   PHILIPPINE ADDRESS MAPPING PIPELINE — RUN LOG
+============================================================
+Run Timestamp             : 2026-04-14 18:04:28
+
+── INPUT ──────────────────────────────────────────────────
+Raw addresses file        : ../../data/sample/ps_address_v3/ps_address_v3_part_001.xlsx
+Alias rules file          : ../../data/utils/ph_address_alias_extended_v4.csv
+Dictionary file           : ../../data/dictionary/ph_area_dictionary_v2.json
+Dim location file         : ../../data/mapping/dim_location_20260316_v2.csv
+
+── PART 1: NORMALIZATION & CITY FILTER ────────────────────
+Total raw addresses loaded: 10,000
+Total after normalization : 10,000
+Dropped (no city found)   : 5,378
+Passed to Part 2          : 4,622
+Filtered dim_location rows: 22,018
+
+── PART 2: FUZZY MATCHING ─────────────────────────────────
+Fuzzy threshold           : 80%
+Total valid matches       : 4,622
+  ↳ Level 1 (barangay)   : 1,017
+  ↳ Level 2 (city)       : 3,604
+  ↳ Level 3 (province)   : 1
+Total invalid matches     : 0
+Combined addresses file   : ..\..\data\output\combined\combined_addresses_20260414.xlsx
+Low-confidence threshold  : 70.000
+Low-confidence rows       : 0
+
+── OUTPUT FILES ───────────────────────────────────────────
+Valid addresses file      : ..\..\data\output\valid\valid_addresses_20260414.xlsx
+Combined addresses file   : ..\..\data\output\combined\combined_addresses_20260414.xlsx
+Invalid addresses file    : ..\..\data\output\invalid\invalid_addresses_20260414.xlsx
+Low-confidence file       : ..\..\data\output\review\low_confidence_addresses_20260414.xlsx
+Log file                  : ..\..\data\output\logs\pipeline_log_20260414.txt
+Normalized addresses CSV  : normalized_addresses.csv
+============================================================

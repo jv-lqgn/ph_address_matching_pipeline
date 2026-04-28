@@ -1,0 +1,5888 @@
+{
+    "version": "2.1.0",
+    "schema": "city-centric-evidence-aware",
+    "normalization": {
+        "uppercase": true,
+        "ascii_fold": true,
+        "strip_punctuation": true,
+        "collapse_whitespace": true
+    },
+    "global_rules": {
+        "require_anchor_for_city_inference": true,
+        "anchor_tokens": [
+            "CITY",
+            "MUNICIPALITY",
+            "MUN",
+            "BRGY",
+            "BARANGAY",
+            "BGY",
+            "PROVINCE",
+            "PROV"
+        ],
+        "reject_if_only_street_like": true,
+        "min_independent_signals_for_medium": 2,
+        "invalid_reasons": [
+            "missing_explicit_city",
+            "street_only_no_geo_anchor",
+            "ambiguous_area_multi_city",
+            "province_city_conflict",
+            "barangay_ambiguous_no_city"
+        ]
+    },
+    "street_like_terms": [
+        "RIZAL",
+        "MABINI",
+        "BONIFACIO",
+        "BURGOS",
+        "DEL PILAR",
+        "QUEZON AVENUE",
+        "AURORA BLVD",
+        "MCARTHUR HIGHWAY"
+    ],
+    "cities": {
+        "TONDO I/II": {
+            "aliases": [
+                "TONDO"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "TAYUMAN": {
+                    "aliases": [
+                        "Tayuman"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "BINONDO": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "QUIAPO": {
+            "aliases": [
+                "quaipo"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "SAN NICOLAS": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "PANGASINAN"
+        },
+        "SANTA CRUZ": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "SAMPALOC": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "Santa Mesa": {
+                    "aliases": [
+                        "STA. MESA",
+                        "SANTA MESA"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "ERMITA": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "INTRAMUROS": {
+            "aliases": [
+                "WALLED CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "MALATE": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "PACO": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "PANDACAN": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "PORT AREA": {
+            "aliases": [
+                "BASECO",
+                "HARBOUR AREA"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "SAN MIGUEL": {
+            "aliases": [],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "BULACAN"
+        },
+        "SANTA ANA": {
+            "aliases": [
+                "STA. ANA"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "CITY OF CALOOCAN": {
+            "aliases": [
+                "CALOOCAN",
+                "CALOOCAN CITY",
+                "CAL CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "MONUMENTO": {
+                    "aliases": [
+                        "MONUMENTO CIRCLE"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "GRACE PARK": {
+                    "aliases": [],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "BAGONG SILANG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "DEPARO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "QUEZON CITY": {
+            "aliases": [
+                "CITY OF QUEZON",
+                "CITY OF QUEZON CITY",
+                "QC",
+                "Q C"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "CUBAO": {
+                    "aliases": [
+                        "ARANETA CUBAO"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 100
+                },
+                "DOÑA IMELDA": {
+                    "aliases": [
+                        "Brgy DoÃ±a Imelda"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 100
+                },
+                "DILIMAN": {
+                    "aliases": [],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "NEW MANILA": {
+                    "aliases": [],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "COMMONWEALTH": {
+                    "aliases": [
+                        "COMMONWEALTH AVE"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 90
+                },
+                "NOVALICHES": {
+                    "aliases": [
+                        "NOVA"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "PROJECT 4": {
+                    "aliases": [
+                        "PROJ 4",
+                        "PROJECT FOUR"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "PASONG PUTIK": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "TANDANG SORA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "SAN FRANCISCO DEL MONTE": {
+                    "aliases": [
+                        "SFDM",
+                        "DEL MONTE"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 92
+                },
+                "STA MONICA": {
+                    "aliases": [
+                        "SANTA MONICA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 91
+                },
+                "STA TERESITA": {
+                    "aliases": [
+                        "SANTA TERESITA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 91
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF TAGUIG": {
+            "aliases": [
+                "TAGUIG"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "BGC": {
+                    "aliases": [
+                        "BONIFACIO GLOBAL CITY",
+                        "FORT BONIFACIO",
+                        "THE FORT"
+                    ],
+                    "type": "business_district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 100
+                },
+                "WESTERN BICUTAN": {
+                    "aliases": [
+                        "W BICUTAN"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "EASTERN BICUTAN": {
+                    "aliases": [
+                        "E BICUTAN"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "USUSAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                },
+                "PINAGSAMA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                },
+                "SIGNAL VILLAGE": {
+                    "aliases": [
+                        "SIGNAL",
+                        "SOUTH SIGNAL",
+                        "CENTRAL SIGNAL"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 94
+                },
+                "CENTRAL BICUTAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "UPPER BICUTAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "LOWER BICUTAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "MAHARLIKA VILLAGE": {
+                    "aliases": [
+                        "MAHARLIKA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "AFPOVAI": {
+                    "aliases": [
+                        "DIEGO SILANG AFPOVAI"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 91
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF MAKATI": {
+            "aliases": [
+                "MAKATI",
+                "MAKATI CITY",
+                "MKT"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "BEL AIR": {
+                    "aliases": [
+                        "BEL-AIR"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "AYALA CENTER": {
+                    "aliases": [
+                        "AYALA CTR",
+                        "GREENBELT",
+                        "GLORIETTA"
+                    ],
+                    "type": "business_district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "LEGASPI VILLAGE": {
+                    "aliases": [
+                        "LEGAZPI VILLAGE"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "SALCEDO VILLAGE": {
+                    "aliases": [],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "POBLACION MAKATI": {
+                    "aliases": [
+                        "POBLACION"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": false,
+                    "requires_context": true,
+                    "priority": 70
+                },
+                "SAN ANTONIO VILLAGE": {
+                    "aliases": [
+                        "SAN ANTONIO"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 80
+                },
+                "PASONG TAMO": {
+                    "aliases": [
+                        "CHINO ROCES"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "SAN LORENZO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "GUADALUPE NUEVO": {
+                    "aliases": [
+                        "GUADALUPE"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 91
+                },
+                "OLYMPIA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 91
+                },
+                "CARMONA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF PARANAQUE": {
+            "aliases": [
+                "PARANAQUE",
+                "PARAÑAQUE",
+                "PARANAQUE CITY",
+                "PQUE"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "SUN VALLEY": {
+                    "aliases": [
+                        "SUNVALLEY"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "SUCAT": {
+                    "aliases": [
+                        "SUCAT PARAÑAQUE",
+                        "SUCAT PARANAQUE"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "BF HOMES": {
+                    "aliases": [
+                        "BF PARANAQUE",
+                        "BF PARAÑAQUE"
+                    ],
+                    "type": "subdivision",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 85
+                },
+                "DON BOSCO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                },
+                "SAN DIONISIO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                },
+                "MOONWALK": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MARCELO GREEN": {
+                    "aliases": [
+                        "SEVERINA",
+                        "UPS 5",
+                        "SEVERINA DIAMOND"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 96
+                },
+                "BACLARAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF LAS PINAS": {
+            "aliases": [
+                "LAS PINAS",
+                "LAS PIÑAS",
+                "LAS PIÃ±AS",
+                "LAS PINAS CITY",
+                "LASPINAS",
+                "LP CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "ALMANZA": {
+                    "aliases": [
+                        "ALMANZA UNO",
+                        "ALMANZA DOS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 93
+                },
+                "PAMPLONA": {
+                    "aliases": [
+                        "PAMPLONA UNO",
+                        "PAMPLONA DOS",
+                        "PAMPLONA TRES"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 94
+                },
+                "BF RESORT": {
+                    "aliases": [
+                        "BF RESORT VILLAGE"
+                    ],
+                    "type": "subdivision",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 80
+                },
+                "PILAR": {
+                    "aliases": [
+                        "PILAR VILLAGE"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 95
+                },
+                "ZAPOTE": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "ILAYA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "TALON": {
+                    "aliases": [
+                        "TALON DOS",
+                        "TALON UNO"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "CAA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "PULANG LUPA": {
+                    "aliases": [
+                        "PULANGLUPA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "CASIMIRO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MANUYO": {
+                    "aliases": [
+                        "MANUYO UNO",
+                        "MANUYO DOS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF PASAY": {
+            "aliases": [
+                "PASAY",
+                "PASAY CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "MOA": {
+                    "aliases": [
+                        "MALL OF ASIA",
+                        "SM MOA"
+                    ],
+                    "type": "business_district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "NEWPORT": {
+                    "aliases": [
+                        "NEWPORT CITY",
+                        "RESORTS WORLD"
+                    ],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "BACLARAN": {
+                    "aliases": [],
+                    "type": "district",
+                    "infer_city_allowed": false,
+                    "requires_context": true,
+                    "priority": 70
+                },
+                "EDSA TAFT": {
+                    "aliases": [
+                        "TAFT EDSA",
+                        "MRT TAFT"
+                    ],
+                    "type": "transport_hub",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF PASIG": {
+            "aliases": [
+                "PASIG",
+                "PASIG CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "ORTIGAS CENTER": {
+                    "aliases": [
+                        "ORTIGAS CBD"
+                    ],
+                    "type": "business_district",
+                    "infer_city_allowed": false,
+                    "requires_context": true,
+                    "priority": 75
+                },
+                "KAPITOLYO": {
+                    "aliases": [],
+                    "type": "district",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 90
+                },
+                "BAGONG ILOG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 85
+                },
+                "UGONG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 80
+                },
+                "ROSARIO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 80
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF ALAMINOS": {
+            "aliases": [
+                "ALAMINOS",
+                "CITY OF ALAMINOS"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "PANGASINAN"
+        },
+        "CITY OF ANGELES": {
+            "aliases": [
+                "ANGELES",
+                "CITY OF ANGELES"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "PAMPANGA"
+        },
+        "CITY OF ANTIPOLO": {
+            "aliases": [
+                "ANTIPOLO",
+                "CITY OF ANTIPOLO"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "RIZAL"
+        },
+        "CITY OF BACOLOD": {
+            "aliases": [
+                "BACOLOD",
+                "CITY OF BACOLOD"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF BACOOR": {
+            "aliases": [
+                "BACOOR",
+                "CITY OF BACOOR"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF BAGO": {
+            "aliases": [
+                "BAGO",
+                "CITY OF BAGO"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF BAGUIO": {
+            "aliases": [
+                "BAGUIO",
+                "CITY OF BAGUIO"
+            ],
+            "region": "CORDILLERA ADMINISTRATIVE REGION (CAR)",
+            "areas": {
+                "SCOUT BARRIO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "BENGUET"
+        },
+        "CITY OF BAIS": {
+            "aliases": [
+                "BAIS",
+                "CITY OF BAIS"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS ORIENTAL"
+        },
+        "CITY OF BALANGA": {
+            "aliases": [
+                "BALANGA",
+                "CITY OF BALANGA"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "BATAAN"
+        },
+        "CITY OF BALIWAG": {
+            "aliases": [
+                "BALIWAG",
+                "CITY OF BALIWAG"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "BULACAN"
+        },
+        "CITY OF BATAC": {
+            "aliases": [
+                "BATAC",
+                "CITY OF BATAC"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "ILOCOS NORTE"
+        },
+        "CITY OF BATANGAS": {
+            "aliases": [
+                "BATANGAS",
+                "CITY OF BATANGAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "BATANGAS"
+        },
+        "CITY OF BAYAWAN": {
+            "aliases": [
+                "BAYAWAN",
+                "CITY OF BAYAWAN"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS ORIENTAL"
+        },
+        "CITY OF BAYBAY": {
+            "aliases": [
+                "BAYBAY",
+                "CITY OF BAYBAY"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "LEYTE"
+        },
+        "BAYOMBONG CITY": {
+            "aliases": [
+                "BAYOMBONG"
+            ],
+            "region": "REGION II (CAGAYAN VALLEY)",
+            "areas": {},
+            "province": "NUEVA VIZCAYA"
+        },
+        "CITY OF BAYUGAN": {
+            "aliases": [
+                "BAYUGAN",
+                "CITY OF BAYUGAN"
+            ],
+            "region": "REGION XIII (CARAGA)",
+            "areas": {},
+            "province": "AGUSAN DEL SUR"
+        },
+        "CITY OF BINAN": {
+            "aliases": [
+                "BINAN",
+                "BIÑAN",
+                "CITY OF BINAN"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LAGUNA"
+        },
+        "CITY OF BIÑAN": {
+            "aliases": [
+                "CITY OF BIÑAN"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LAGUNA"
+        },
+        "CITY OF BISLIG": {
+            "aliases": [
+                "BISLIG",
+                "CITY OF BISLIG"
+            ],
+            "region": "REGION XIII (CARAGA)",
+            "areas": {},
+            "province": "SURIGAO DEL SUR"
+        },
+        "CITY OF BOCAUE": {
+            "aliases": [
+                "BOC",
+                "CITY OF BOCAUE"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "BULACAN"
+        },
+        "CITY OF BOGO": {
+            "aliases": [
+                "BOGO",
+                "CITY OF BOGO"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF BORONGAN": {
+            "aliases": [
+                "BORONGAN",
+                "CITY OF BORONGAN"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "EASTERN SAMAR"
+        },
+        "CITY OF BUTUAN": {
+            "aliases": [
+                "BUTUAN",
+                "CITY OF BUTUAN"
+            ],
+            "region": "REGION XIII (CARAGA)",
+            "areas": {},
+            "province": "AGUSAN DEL NORTE"
+        },
+        "CITY OF CABADBARAN": {
+            "aliases": [
+                "CABADBARAN",
+                "CITY OF CABADBARAN"
+            ],
+            "region": "REGION XIII (CARAGA)",
+            "areas": {},
+            "province": "AGUSAN DEL NORTE"
+        },
+        "CITY OF CABANATUAN": {
+            "aliases": [
+                "CABANATUAN",
+                "CABANUTUAN",
+                "CITY OF CABANATUAN"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "NUEVA ECIJA"
+        },
+        "CITY OF CABUYAO": {
+            "aliases": [
+                "CABUYAO",
+                "CITY OF CABUYAO"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LAGUNA"
+        },
+        "CITY OF CADIZ": {
+            "aliases": [
+                "CADIZ",
+                "CITY OF CADIZ"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF CAGAYAN DE ORO": {
+            "aliases": [
+                "CAGAYAN DE ORO",
+                "CDEO",
+                "CDO",
+                "CDOC",
+                "CITY OF CAGAYAN DE ORO"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {
+                "CARMEN": {
+                    "aliases": [
+                        "UPPER CARMEN"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 95
+                },
+                "KAUSWAGAN": {
+                    "aliases": [
+                        "NHA KAUSWAGAN"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 95
+                },
+                "BALULANG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "LUMBIA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "BULUA": {
+                    "aliases": [
+                        "UPPER BULUA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "IPONAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "GUSA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MACASANDIG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "NAZARETH": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "INDAHAG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "LAPASAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "PAGATPAT": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "BUGO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "AGUSAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 92
+                },
+                "CUGMAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "BAYABAS": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "MISAMIS ORIENTAL"
+        },
+        "CITY OF CALACA": {
+            "aliases": [
+                "CITY OF CALACA"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "BATANGAS"
+        },
+        "CITY OF CALAMBA": {
+            "aliases": [
+                "CALAMBA",
+                "CITY OF CALAMBA"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LAGUNA"
+        },
+        "CITY OF CALAPAN": {
+            "aliases": [
+                "CALAPAN",
+                "CITY OF CALAPAN"
+            ],
+            "region": "MIMAROPA REGION",
+            "areas": {},
+            "province": "ORIENTAL MINDORO"
+        },
+        "CITY OF CALBAYOG": {
+            "aliases": [
+                "CALBAYOG",
+                "CITY OF CALBAYOG"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "SAMAR"
+        },
+        "CITY OF CANDON": {
+            "aliases": [
+                "CANDON",
+                "CITY OF CANDON"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "ILOCOS SUR"
+        },
+        "CITY OF CANLAON": {
+            "aliases": [
+                "CANLAON",
+                "CITY OF CANLAON"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS ORIENTAL"
+        },
+        "CITY OF CARCAR": {
+            "aliases": [
+                "CARCAR",
+                "CITY OF CARCAR"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF CARMONA": {
+            "aliases": [
+                "CARMONA",
+                "CITY OF CARMONA"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF CATBALOGAN": {
+            "aliases": [
+                "CATBALOGAN",
+                "CITY OF CATBALOGAN"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "SAMAR"
+        },
+        "CITY OF CAUAYAN": {
+            "aliases": [
+                "CAUAYAN",
+                "CITY OF CAUAYAN"
+            ],
+            "region": "REGION II (CAGAYAN VALLEY)",
+            "areas": {},
+            "province": "ISABELA"
+        },
+        "CITY OF CAVITE": {
+            "aliases": [
+                "CITY OF CAVITE"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF CEBU": {
+            "aliases": [
+                "CEBU",
+                "CITY OF CEBU"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF COTABATO": {
+            "aliases": [
+                "CITY OF COTABATO",
+                "COTABATO"
+            ],
+            "region": "BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO (BARMM)",
+            "areas": {},
+            "province": "MAGUINDANAO DEL NORTE"
+        },
+        "CITY OF DAGUPAN": {
+            "aliases": [
+                "CITY OF DAGUPAN",
+                "DAGUPAN"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "PANGASINAN"
+        },
+        "DANAO CITY": {
+            "aliases": [
+                "DANAO"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF DAPITAN": {
+            "aliases": [
+                "CITY OF DAPITAN"
+            ],
+            "region": "REGION IX (ZAMBOANGA PENINSULA)",
+            "areas": {},
+            "province": "ZAMBOANGA DEL NORTE"
+        },
+        "CITY OF DASMARINAS": {
+            "aliases": [
+                "CITY OF DASMARINAS",
+                "DASMA",
+                "DasmariÃ±as",
+                "DASMARIÃ±AS",
+                "DASMARINAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "DASMARINAS CITY": {
+            "aliases": [
+                "DASMARIÑAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF DASMARIÑAS": {
+            "aliases": [
+                "CITY OF DASMARIÑAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF DAVAO": {
+            "aliases": [
+                "CITY OF DAVAO",
+                "DAVAO",
+                "DC"
+            ],
+            "region": "REGION XI (DAVAO REGION)",
+            "areas": {
+                "BAGO GALLERA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "BAGO APLAYA": {
+                    "aliases": [
+                        "BAGO APLYA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "BAGO OSHIRO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "DAVAO DEL SUR"
+        },
+        "CITY OF DIGOS": {
+            "aliases": [
+                "CITY OF DIGOS",
+                "DIGOS"
+            ],
+            "region": "REGION XI (DAVAO REGION)",
+            "areas": {},
+            "province": "DAVAO DEL SUR"
+        },
+        "CITY OF DIPOLOG": {
+            "aliases": [
+                "CITY OF DIPOLOG",
+                "DIPOLOG"
+            ],
+            "region": "REGION IX (ZAMBOANGA PENINSULA)",
+            "areas": {},
+            "province": "ZAMBOANGA DEL NORTE"
+        },
+        "CITY OF DUMAGUETE": {
+            "aliases": [
+                "CITY OF DUMAGUETE",
+                "DUMAGUETE"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS ORIENTAL"
+        },
+        "CITY OF EL SALVADOR": {
+            "aliases": [
+                "CITY OF EL SALVADOR",
+                "EL SALVADOR"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "MISAMIS ORIENTAL"
+        },
+        "CITY OF ESCALANTE": {
+            "aliases": [
+                "CITY OF ESCALANTE",
+                "ESCALANTE"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF GAPAN": {
+            "aliases": [
+                "CITY OF GAPAN",
+                "GAPAN"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "NUEVA ECIJA"
+        },
+        "GENERAL MARIANO ALVAREZ CITY": {
+            "aliases": [
+                "GENERAL MARIANO ALVAREZ",
+                "GMA"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF GENERAL SANTOS": {
+            "aliases": [
+                "CITY OF GENERAL SANTOS",
+                "GENERAL SANTOS",
+                "GENSAN",
+                "GSC"
+            ],
+            "region": "REGION XII (SOCCSKSARGEN)",
+            "areas": {},
+            "province": "SOUTH COTABATO"
+        },
+        "CITY OF GENERAL TRIAS": {
+            "aliases": [
+                "CITY OF GENERAL TRIAS",
+                "GEN.TRIAS",
+                "GENERAL TRIAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF GINGOOG": {
+            "aliases": [
+                "CITY OF GINGOOG",
+                "GINGOOG"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "MISAMIS ORIENTAL"
+        },
+        "CITY OF GUIHULNGAN": {
+            "aliases": [
+                "CITY OF GUIHULNGAN",
+                "GUIHULNGAN"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS ORIENTAL"
+        },
+        "CITY OF HIMAMAYLAN": {
+            "aliases": [
+                "CITY OF HIMAMAYLAN",
+                "HIMAMAYLAN"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF ILAGAN": {
+            "aliases": [
+                "CITY OF ILAGAN",
+                "ILAGAN"
+            ],
+            "region": "REGION II (CAGAYAN VALLEY)",
+            "areas": {},
+            "province": "ISABELA"
+        },
+        "CITY OF ILIGAN": {
+            "aliases": [
+                "CITY OF ILIGAN",
+                "ILIGAN"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "LANAO DEL NORTE"
+        },
+        "CITY OF ILOILO": {
+            "aliases": [
+                "CITY OF ILOILO",
+                "ILOILO"
+            ],
+            "region": "REGION VI (WESTERN VISAYAS)",
+            "areas": {},
+            "province": "ILOILO"
+        },
+        "CITY OF IMUS": {
+            "aliases": [
+                "CITY OF IMUS",
+                "IMUS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "IPIL CITY": {
+            "aliases": [
+                "IPIL"
+            ],
+            "region": "REGION IX (ZAMBOANGA PENINSULA)",
+            "areas": {},
+            "province": "ZAMBOANGA SIBUGAY"
+        },
+        "CITY OF IRIGA": {
+            "aliases": [
+                "CITY OF IRIGA",
+                "IRIGA"
+            ],
+            "region": "REGION V (BICOL REGION)",
+            "areas": {},
+            "province": "CAMARINES SUR"
+        },
+        "CITY OF ISABELA": {
+            "aliases": [
+                "CITY OF ISABELA"
+            ],
+            "region": "BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO (BARMM)",
+            "areas": {},
+            "province": "BASILAN"
+        },
+        "CITY OF KABANKALAN": {
+            "aliases": [
+                "CITY OF KABANKALAN",
+                "KABANKALAN"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF KIDAPAWAN": {
+            "aliases": [
+                "CITY OF KIDAPAWAN",
+                "KIDAPAWAN"
+            ],
+            "region": "REGION XII (SOCCSKSARGEN)",
+            "areas": {},
+            "province": "COTABATO"
+        },
+        "CITY OF KORONADAL": {
+            "aliases": [
+                "CITY OF KORONADAL",
+                "KORONADAL"
+            ],
+            "region": "REGION XII (SOCCSKSARGEN)",
+            "areas": {},
+            "province": "SOUTH COTABATO"
+        },
+        "CITY OF LA CARLOTA": {
+            "aliases": [
+                "CITY OF LA CARLOTA",
+                "LA CARLOTA"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF LAMITAN": {
+            "aliases": [
+                "CITY OF LAMITAN",
+                "LAMITAN"
+            ],
+            "region": "BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO (BARMM)",
+            "areas": {},
+            "province": "BASILAN"
+        },
+        "CITY OF LAOAG": {
+            "aliases": [
+                "CITY OF LAOAG",
+                "LAOAG"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "ILOCOS NORTE"
+        },
+        "CITY OF LAPU-LAPU": {
+            "aliases": [
+                "CITY OF LAPU-LAPU",
+                "LAPU LAPU",
+                "LAPULAPU",
+                "LAPU-LAPU"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF LAS PIÑAS": {
+            "aliases": [
+                "CITY OF LAS PIÑAS",
+                "LASPINAS",
+                "LP CITY",
+                "LAS PINAS CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "PILAR": {
+                    "aliases": [
+                        "PILAR VILLAGE"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 95
+                },
+                "ZAPOTE": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "ILAYA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "TALON": {
+                    "aliases": [
+                        "TALON DOS",
+                        "TALON UNO"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "CAA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "PAMPLONA": {
+                    "aliases": [
+                        "PAMPLONA DOS",
+                        "PAMPLONA TRES"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "PULANG LUPA": {
+                    "aliases": [
+                        "PULANGLUPA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "ALMANZA": {
+                    "aliases": [
+                        "ALMANZA UNO",
+                        "ALMANZA DOS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "CASIMIRO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MANUYO": {
+                    "aliases": [
+                        "MANUYO UNO",
+                        "MANUYO DOS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF LEGAZPI": {
+            "aliases": [
+                "CITY OF LEGAZPI",
+                "LEGAZPI"
+            ],
+            "region": "REGION V (BICOL REGION)",
+            "areas": {},
+            "province": "ALBAY"
+        },
+        "CITY OF LIGAO": {
+            "aliases": [
+                "CITY OF LIGAO",
+                "LIGAO"
+            ],
+            "region": "REGION V (BICOL REGION)",
+            "areas": {},
+            "province": "ALBAY"
+        },
+        "CITY OF LIPA": {
+            "aliases": [
+                "CITY OF LIPA",
+                "LIPA"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "BATANGAS"
+        },
+        "CITY OF LUCENA": {
+            "aliases": [
+                "CITY OF LUCENA",
+                "LUCENA"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "QUEZON"
+        },
+        "CITY OF MAASIN": {
+            "aliases": [
+                "CITY OF MAASIN",
+                "MAASIN"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "SOUTHERN LEYTE"
+        },
+        "MABALACAT CITY": {
+            "aliases": [
+                "MABALACAT"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "PAMPANGA"
+        },
+        "CITY OF MALAYBALAY": {
+            "aliases": [
+                "CITY OF MALAYBALAY",
+                "MALAYBALAY"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "BUKIDNON"
+        },
+        "CITY OF MALOLOS": {
+            "aliases": [
+                "CITY OF MALOLOS",
+                "MALOLOS"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "BULACAN"
+        },
+        "CITY OF MANDAUE": {
+            "aliases": [
+                "CITY OF MANDAUE",
+                "MANDAUE"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF MARAWI": {
+            "aliases": [
+                "CITY OF MARAWI",
+                "MARAWI"
+            ],
+            "region": "BANGSAMORO AUTONOMOUS REGION IN MUSLIM MINDANAO (BARMM)",
+            "areas": {},
+            "province": "LANAO DEL SUR"
+        },
+        "CITY OF MASBATE": {
+            "aliases": [
+                "CITY OF MASBATE",
+                "MASBATE"
+            ],
+            "region": "REGION V (BICOL REGION)",
+            "areas": {},
+            "province": "MASBATE"
+        },
+        "CITY OF MATI": {
+            "aliases": [
+                "CITY OF MATI",
+                "MATI"
+            ],
+            "region": "REGION XI (DAVAO REGION)",
+            "areas": {},
+            "province": "DAVAO ORIENTAL"
+        },
+        "CITY OF MEYCAUAYAN": {
+            "aliases": [
+                "CITY OF MEYCAUAYAN",
+                "MEYCAUAYAN"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "BULACAN"
+        },
+        "CITY OF NAGA": {
+            "aliases": [
+                "CITY OF NAGA",
+                "NAGA"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF OLONGAPO": {
+            "aliases": [
+                "CITY OF OLONGAPO",
+                "OLONGAPO"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "ZAMBALES"
+        },
+        "ORMOC CITY": {
+            "aliases": [
+                "ORMOC"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "LEYTE"
+        },
+        "CITY OF OROQUIETA": {
+            "aliases": [
+                "CITY OF OROQUIETA",
+                "OROQUIETA"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "MISAMIS OCCIDENTAL"
+        },
+        "CITY OF OZAMIZ": {
+            "aliases": [
+                "CITY OF OZAMIZ",
+                "OZAMIZ",
+                "OZAMIS"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "MISAMIS OCCIDENTAL"
+        },
+        "CITY OF PAGADIAN": {
+            "aliases": [
+                "CITY OF PAGADIAN",
+                "PAGADIAN"
+            ],
+            "region": "REGION IX (ZAMBOANGA PENINSULA)",
+            "areas": {},
+            "province": "ZAMBOANGA DEL SUR"
+        },
+        "CITY OF PALAYAN": {
+            "aliases": [
+                "CITY OF PALAYAN",
+                "PALAYAN"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "NUEVA ECIJA"
+        },
+        "CITY OF PANABO": {
+            "aliases": [
+                "CITY OF PANABO",
+                "PANABO"
+            ],
+            "region": "REGION XI (DAVAO REGION)",
+            "areas": {},
+            "province": "DAVAO DEL NORTE"
+        },
+        "CITY OF PARA�AQUE": {
+            "aliases": [
+                "CITY OF PARA�AQUE",
+                "PARA�AQUE",
+                "CITY OF PARANAQUE",
+                "PARA AQUE",
+                "PQUE",
+                "PQUE CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        },
+        "CITY OF PARAÑAQUE": {
+            "aliases": [
+                "CITY OF PARAÑAQUE",
+                "CITY OF PARANAQUE",
+                "PARA AQUE",
+                "PQUE",
+                "PARANAQUE CITY"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {
+                "MOONWALK": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MARCELO GREEN": {
+                    "aliases": [
+                        "SEVERINA",
+                        "UPS 5",
+                        "SEVERINA DIAMOND"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 96
+                },
+                "SUN VALLEY": {
+                    "aliases": [
+                        "SUNVALLEY"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "SUCAT": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "BACLARAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "province": "METRO MANILA"
+        },
+        "CITY OF PASSI": {
+            "aliases": [
+                "CITY OF PASSI",
+                "PASSI"
+            ],
+            "region": "REGION VI (WESTERN VISAYAS)",
+            "areas": {},
+            "province": "ILOILO"
+        },
+        "CITY OF PUERTO PRINCESA": {
+            "aliases": [
+                "CITY OF PUERTO PRINCESA",
+                "PUERTO PRINCESA"
+            ],
+            "region": "MIMAROPA REGION",
+            "areas": {},
+            "province": "PALAWAN"
+        },
+        "CITY OF ROXAS": {
+            "aliases": [
+                "CITY OF ROXAS",
+                "ROXAS"
+            ],
+            "region": "REGION VI (WESTERN VISAYAS)",
+            "areas": {},
+            "province": "CAPIZ"
+        },
+        "CITY OF SAGAY": {
+            "aliases": [
+                "CITY OF SAGAY",
+                "SAGAY"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF SAN CARLOS": {
+            "aliases": [
+                "CITY OF SAN CARLOS",
+                "SAN CARLOS"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "PANGASINAN"
+        },
+        "CITY OF SAN FERNANDO": {
+            "aliases": [
+                "CITY OF SAN FERNANDO",
+                "CSFP",
+                "SAN FERNANDO"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "LA UNION"
+        },
+        "CITY OF SAN JOSE DEL MONTE": {
+            "aliases": [
+                "CITY OF SAN JOSE DEL MONTE",
+                "SAN JOSE DEL MONTE",
+                "SJDM",
+                "SJM"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "BULACAN"
+        },
+        "CITY OF SAN PABLO": {
+            "aliases": [
+                "CITY OF SAN PABLO",
+                "SAN PABLO"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LAGUNA"
+        },
+        "CITY OF SAN PEDRO": {
+            "aliases": [
+                "CITY OF SAN PEDRO",
+                "SAN PEDRO"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LAGUNA"
+        },
+        "CITY OF SANTA ROSA": {
+            "aliases": [
+                "CITY OF SANTA ROSA",
+                "SANTA ROSA",
+                "SRL"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {
+                "TAGAPO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "DITA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "BALIBAGO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 92
+                }
+            },
+            "province": "LAGUNA"
+        },
+        "CITY OF SANTIAGO": {
+            "aliases": [
+                "CITY OF SANTIAGO",
+                "SANTIAGO"
+            ],
+            "region": "REGION II (CAGAYAN VALLEY)",
+            "areas": {},
+            "province": "ISABELA"
+        },
+        "CITY OF SILAY": {
+            "aliases": [
+                "CITY OF SILAY",
+                "SILAY"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF SIPALAY": {
+            "aliases": [
+                "CITY OF SIPALAY",
+                "SIPALAY"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF SORSOGON": {
+            "aliases": [
+                "CITY OF SORSOGON",
+                "SORSOGON"
+            ],
+            "region": "REGION V (BICOL REGION)",
+            "areas": {},
+            "province": "SORSOGON"
+        },
+        "CITY OF STO. TOMAS": {
+            "aliases": [
+                "CITY OF STO. TOMAS",
+                "SANTO TOMAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "BATANGAS"
+        },
+        "CITY OF SURIGAO": {
+            "aliases": [
+                "CITY OF SURIGAO",
+                "SURIGAO"
+            ],
+            "region": "REGION XIII (CARAGA)",
+            "areas": {},
+            "province": "SURIGAO DEL NORTE"
+        },
+        "CITY OF TABACO": {
+            "aliases": [
+                "CITY OF TABACO",
+                "TABACO"
+            ],
+            "region": "REGION V (BICOL REGION)",
+            "areas": {},
+            "province": "ALBAY"
+        },
+        "CITY OF TABUK": {
+            "aliases": [
+                "CITY OF TABUK",
+                "TABUK"
+            ],
+            "region": "CORDILLERA ADMINISTRATIVE REGION (CAR)",
+            "areas": {},
+            "province": "KALINGA"
+        },
+        "CITY OF TACLOBAN": {
+            "aliases": [
+                "CITY OF TACLOBAN",
+                "TACLOBAN"
+            ],
+            "region": "REGION VIII (EASTERN VISAYAS)",
+            "areas": {},
+            "province": "LEYTE"
+        },
+        "CITY OF TACURONG": {
+            "aliases": [
+                "CITY OF TACURONG",
+                "TACURONG"
+            ],
+            "region": "REGION XII (SOCCSKSARGEN)",
+            "areas": {},
+            "province": "SULTAN KUDARAT"
+        },
+        "CITY OF TAGAYTAY": {
+            "aliases": [
+                "CITY OF TAGAYTAY",
+                "TAGAYTAY"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF TAGBILARAN": {
+            "aliases": [
+                "CITY OF TAGBILARAN",
+                "TAGBILARAN"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "BOHOL"
+        },
+        "CITY OF TAGUM": {
+            "aliases": [
+                "CITY OF TAGUM",
+                "TAGUM"
+            ],
+            "region": "REGION XI (DAVAO REGION)",
+            "areas": {},
+            "province": "DAVAO DEL NORTE"
+        },
+        "CITY OF TALISAY": {
+            "aliases": [
+                "CITY OF TALISAY",
+                "TALISAY"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF TANAUAN": {
+            "aliases": [
+                "CITY OF TANAUAN",
+                "TANAUAN"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "LEYTE"
+        },
+        "CITY OF TANDAG": {
+            "aliases": [
+                "CITY OF TANDAG",
+                "TANDAG"
+            ],
+            "region": "REGION XIII (CARAGA)",
+            "areas": {},
+            "province": "SURIGAO DEL SUR"
+        },
+        "CITY OF TANGUB": {
+            "aliases": [
+                "CITY OF TANGUB",
+                "TANGUB"
+            ],
+            "region": "REGION X (NORTHERN MINDANAO)",
+            "areas": {},
+            "province": "MISAMIS OCCIDENTAL"
+        },
+        "CITY OF TANJAY": {
+            "aliases": [
+                "CITY OF TANJAY",
+                "TANJAY"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS ORIENTAL"
+        },
+        "CITY OF TARLAC": {
+            "aliases": [
+                "CITY OF TARLAC",
+                "TARLAC"
+            ],
+            "region": "REGION III (CENTRAL LUZON)",
+            "areas": {},
+            "province": "TARLAC"
+        },
+        "CITY OF TAYABAS": {
+            "aliases": [
+                "CITY OF TAYABAS",
+                "TAYABAS"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "QUEZON"
+        },
+        "CITY OF TOLEDO": {
+            "aliases": [
+                "CITY OF TOLEDO",
+                "TOLEDO"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "CEBU"
+        },
+        "CITY OF TRECE MARTIRES": {
+            "aliases": [
+                "CITY OF TRECE MARTIRES",
+                "TRECE MARTIRES"
+            ],
+            "region": "REGION IV-A (CALABARZON)",
+            "areas": {},
+            "province": "CAVITE"
+        },
+        "CITY OF TUGUEGARAO": {
+            "aliases": [
+                "CITY OF TUGUEGARAO",
+                "TUGUEGARAO",
+                "TC"
+            ],
+            "region": "REGION II (CAGAYAN VALLEY)",
+            "areas": {},
+            "province": "CAGAYAN"
+        },
+        "CITY OF URDANETA": {
+            "aliases": [
+                "CITY OF URDANETA",
+                "URDANETA"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "PANGASINAN"
+        },
+        "CITY OF VALENCIA": {
+            "aliases": [
+                "CITY OF VALENCIA",
+                "VALENCIA"
+            ],
+            "region": "REGION VII (CENTRAL VISAYAS)",
+            "areas": {},
+            "province": "BUKIDNON"
+        },
+        "CITY OF VICTORIAS": {
+            "aliases": [
+                "CITY OF VICTORIAS",
+                "VICTORIAS"
+            ],
+            "region": "NEGROS ISLAND REGION (NIR)",
+            "areas": {},
+            "province": "NEGROS OCCIDENTAL"
+        },
+        "CITY OF VIGAN": {
+            "aliases": [
+                "CITY OF VIGAN",
+                "VIGAN"
+            ],
+            "region": "REGION I (ILOCOS REGION)",
+            "areas": {},
+            "province": "ILOCOS SUR"
+        },
+        "CITY OF ZAMBOANGA": {
+            "aliases": [
+                "CITY OF ZAMBOANGA",
+                "ZAMBOANGA",
+                "ZC"
+            ],
+            "region": "REGION IX (ZAMBOANGA PENINSULA)",
+            "areas": {},
+            "province": "ZAMBOANGA DEL SUR"
+        },
+        "CITY OF LAS PI?AS": {
+            "alias": [
+                "LAS PINAS",
+                "LAS PIÑAS",
+                "LAS PIÃ±AS",
+                "LAS PI AS",
+                "LAS PINAS CITY",
+                "LASPINAS",
+                "LP CITY",
+                "LPA"
+            ],
+            "areas": {
+                "PILAR": {
+                    "aliases": [
+                        "PILAR VILLAGE"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 95
+                },
+                "ZAPOTE": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "ILAYA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "TALON": {
+                    "aliases": [
+                        "TALON DOS",
+                        "TALON UNO"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "CAA": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "PAMPLONA": {
+                    "aliases": [
+                        "PAMPLONA DOS",
+                        "PAMPLONA TRES"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "PULANG LUPA": {
+                    "aliases": [
+                        "PULANGLUPA"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "ALMANZA": {
+                    "aliases": [
+                        "ALMANZA UNO",
+                        "ALMANZA DOS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 93
+                },
+                "CASIMIRO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MANUYO": {
+                    "aliases": [
+                        "MANUYO UNO",
+                        "MANUYO DOS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "aliases": [
+                "LASPINAS",
+                "LP CITY",
+                "LAS PINAS CITY"
+            ]
+        },
+        "CITY OF SAN JUAN": {
+            "areas": {
+                "GREENHILLS": {
+                    "aliases": [
+                        "NORTH GREENHILLS"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "SALAPAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "KABAYANAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            }
+        },
+        "CITY OF MARIKINA": {
+            "areas": {
+                "MARIKINA HEIGHTS": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "PARANG": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 92
+                }
+            }
+        },
+        "CITY OF PARA?AQUE": {
+            "alias": [
+                "CITY OF PARANAQUE",
+                "PARA AQUE",
+                "PQUE",
+                "PQUE CITY"
+            ],
+            "areas": {
+                "MOONWALK": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                },
+                "MARCELO GREEN": {
+                    "aliases": [
+                        "SEVERINA",
+                        "UPS 5",
+                        "SEVERINA DIAMOND"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 96
+                },
+                "SUN VALLEY": {
+                    "aliases": [
+                        "SUNVALLEY"
+                    ],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 95
+                },
+                "SUCAT": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 94
+                },
+                "BACLARAN": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            },
+            "aliases": [
+                "PQUE",
+                "PARANAQUE CITY"
+            ]
+        },
+        "SAN PASCUAL": {
+            "areas": {
+                "SAMBAT": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": false,
+                    "priority": 92
+                }
+            }
+        },
+        "SAN ILDEFONSO": {
+            "areas": {
+                "BAGONG BARRIO": {
+                    "aliases": [],
+                    "type": "barangay_like_area",
+                    "infer_city_allowed": true,
+                    "requires_context": true,
+                    "priority": 92
+                }
+            }
+        },
+        "CITY OF VALENZUELA": {
+            "aliases": [
+                "VC",
+                "Val",
+                "Val City"
+            ],
+            "region": "NATIONAL CAPITAL REGION (NCR)",
+            "areas": {},
+            "province": "METRO MANILA"
+        }
+    },
+    "legacy_compat": {
+        "enabled": true,
+        "notes": [
+            "Keep these sections while pipeline migrates from hardcoded lookups.",
+            "Loader should prefer cities/areas when both legacy and new entries exist."
+        ],
+        "MANILA_DISTRICTS": {
+            "TONDO I/II": [],
+            "BINONDO": [],
+            "QUIAPO": [],
+            "SAMPALOC": [],
+            "SAN MIGUEL": [],
+            "SAN NICOLAS": [],
+            "SANTA CRUZ": [],
+            "SANTA ANA": [],
+            "ERMITA": [],
+            "INTRAMUROS": [],
+            "MALATE": [],
+            "PACO": [],
+            "PANDACAN": [],
+            "PORT AREA": []
+        },
+        "NCR_CITIES": {
+            "CITY OF CALOOCAN": [],
+            "CITY OF MALABON": [],
+            "CITY OF NAVOTAS": [],
+            "CITY OF PASAY": [],
+            "CITY OF PASIG": [],
+            "CITY OF PARANAQUE": [],
+            "CITY OF LAS PINAS": [],
+            "CITY OF MAKATI": [],
+            "CITY OF MANDALUYONG": [],
+            "CITY OF SAN JUAN": [],
+            "CITY OF TAGUIG": [],
+            "QUEZON CITY": [],
+            "CITY OF MANILA": []
+        }
+    },
+    "province_aliases": {
+        "CAMARINES NORTE": ["C N", "CAM NORTE", "CAMNORTE", "DCN", "CN"],
+        "CAMARINES SUR": ["CAM SUR", "CAMSUR"],
+        "EASTERN SAMAR": ["E SAMAR"],
+        "MAGUINDANAO DEL NORTE": ["MAGUINDANAO"],
+        "METRO MANILA": ["MM", "NCR"],
+        "MISAMIS OCCIDENTAL": ["MIS OCC", "MIS OCCIDENTAL"],
+        "MISAMIS ORIENTAL": ["MIS OR", "MIS ORIENTAL"],
+        "MOUNTAIN PROVINCE": ["MT PROVINCE", "MTN PROVINCE"],
+        "NEGROS OCCIDENTAL": ["NEG OCC", "NEG OCCIDENTAL"],
+        "NEGROS ORIENTAL": ["NEG OR", "NEG ORIENTAL"],
+        "NORTHERN SAMAR": ["N SAMAR"],
+        "OCCIDENTAL MINDORO": ["OCC MINDORO"],
+        "ORIENTAL MINDORO": ["OR MINDORO"],
+        "SOUTHERN LEYTE": ["S LEYTE"],
+        "SURIGAO DEL NORTE": ["SUR DEL NORTE"],
+        "SURIGAO DEL SUR": ["SUR DEL SUR"],
+        "ZAMBOANGA DEL NORTE": ["ZAM DEL NORTE"],
+        "ZAMBOANGA DEL SUR": ["ZAM DEL SUR"]
+    },
+    "province_city_map": {
+        "ABRA": [
+            "BANGUED",
+            "BOLINEY",
+            "BUCAY",
+            "BUCLOC",
+            "DAGUIOMAN",
+            "DANGLAS",
+            "DOLORES",
+            "LA PAZ",
+            "LACUB",
+            "LAGANGILANG",
+            "LAGAYAN",
+            "LANGIDEN",
+            "LICUAN-BAAY",
+            "LUBA",
+            "MALIBCONG",
+            "MANABO",
+            "PEÑARRUBIA",
+            "PIDIGAN",
+            "PILAR",
+            "SALLAPADAN",
+            "SAN ISIDRO",
+            "SAN JUAN",
+            "SAN QUINTIN",
+            "TAYUM",
+            "TINEG",
+            "TUBO",
+            "VILLAVICIOSA"
+        ],
+        "AGUSAN DEL NORTE": [
+            "BUENAVISTA",
+            "CARMEN",
+            "CITY OF BUTUAN",
+            "CITY OF CABADBARAN",
+            "JABONGA",
+            "KITCHARAO",
+            "LAS NIEVES",
+            "MAGALLANES",
+            "NASIPIT",
+            "REMEDIOS T. ROMUALDEZ",
+            "SANTIAGO",
+            "TUBAY"
+        ],
+        "AGUSAN DEL SUR": [
+            "BUNAWAN",
+            "CITY OF BAYUGAN",
+            "ESPERANZA",
+            "LA PAZ",
+            "LORETO",
+            "PROSPERIDAD",
+            "ROSARIO",
+            "SAN FRANCISCO",
+            "SAN LUIS",
+            "SANTA JOSEFA",
+            "SIBAGAT",
+            "TALACOGON",
+            "TRENTO",
+            "VERUELA"
+        ],
+        "AKLAN": [
+            "ALTAVAS",
+            "BALETE",
+            "BANGA",
+            "BATAN",
+            "BURUANGA",
+            "IBAJAY",
+            "KALIBO",
+            "LEZO",
+            "LIBACAO",
+            "MADALAG",
+            "MAKATO",
+            "MALAY",
+            "MALINAO",
+            "NABAS",
+            "NEW WASHINGTON",
+            "NUMANCIA",
+            "TANGALAN"
+        ],
+        "ALBAY": [
+            "BACACAY",
+            "CAMALIG",
+            "CITY OF LEGAZPI",
+            "CITY OF LIGAO",
+            "CITY OF TABACO",
+            "DARAGA",
+            "GUINOBATAN",
+            "JOVELLAR",
+            "LIBON",
+            "MALILIPOT",
+            "MALINAO",
+            "MANITO",
+            "OAS",
+            "PIO DURAN",
+            "POLANGUI",
+            "RAPU-RAPU",
+            "SANTO DOMINGO",
+            "TIWI"
+        ],
+        "ANTIQUE": [
+            "ANINI-Y",
+            "BARBAZA",
+            "BELISON",
+            "BUGASONG",
+            "CALUYA",
+            "CULASI",
+            "HAMTIC",
+            "LAUA-AN",
+            "LIBERTAD",
+            "PANDAN",
+            "PATNONGON",
+            "SAN JOSE",
+            "SAN REMIGIO",
+            "SEBASTE",
+            "SIBALOM",
+            "TIBIAO",
+            "TOBIAS FORNIER",
+            "VALDERRAMA"
+        ],
+        "APAYAO": [
+            "CALANASAN",
+            "CONNER",
+            "FLORA",
+            "KABUGAO",
+            "LUNA",
+            "PUDTOL",
+            "SANTA MARCELA"
+        ],
+        "AURORA": [
+            "BALER",
+            "CASIGURAN",
+            "DILASAG",
+            "DINALUNGAN",
+            "DINGALAN",
+            "DIPACULAO",
+            "MARIA AURORA",
+            "SAN LUIS"
+        ],
+        "BASILAN": [
+            "AKBAR",
+            "AL-BARKA",
+            "CITY OF ISABELA",
+            "CITY OF LAMITAN",
+            "HADJI MOHAMMAD AJUL",
+            "HADJI MUHTAMAD",
+            "LANTAWAN",
+            "MALUSO",
+            "SUMISIP",
+            "TABUAN-LASA",
+            "TIPO-TIPO",
+            "TUBURAN",
+            "UNGKAYA PUKAN"
+        ],
+        "BATAAN": [
+            "ABUCAY",
+            "BAGAC",
+            "CITY OF BALANGA",
+            "DINALUPIHAN",
+            "HERMOSA",
+            "LIMAY",
+            "MARIVELES",
+            "MORONG",
+            "ORANI",
+            "ORION",
+            "PILAR",
+            "SAMAL"
+        ],
+        "BATANES": [
+            "BASCO",
+            "ITBAYAT",
+            "IVANA",
+            "MAHATAO",
+            "SABTANG",
+            "UYUGAN"
+        ],
+        "BATANGAS": [
+            "AGONCILLO",
+            "ALITAGTAG",
+            "BALAYAN",
+            "BALETE",
+            "BATANGAS CITY",
+            "BAUAN",
+            "CALATAGAN",
+            "CITY OF CALACA",
+            "CITY OF LIPA",
+            "CITY OF STO. TOMAS",
+            "CITY OF TANAUAN",
+            "CUENCA",
+            "IBAAN",
+            "LAUREL",
+            "LEMERY",
+            "LIAN",
+            "LOBO",
+            "MABINI",
+            "MALVAR",
+            "MATAASNAKAHOY",
+            "NASUGBU",
+            "PADRE GARCIA",
+            "ROSARIO",
+            "SAN JOSE",
+            "SAN JUAN",
+            "SAN LUIS",
+            "SAN NICOLAS",
+            "SAN PASCUAL",
+            "SANTA TERESITA",
+            "TAAL",
+            "TALISAY",
+            "TAYSAN",
+            "TINGLOY",
+            "TUY"
+        ],
+        "BENGUET": [
+            "ATOK",
+            "BAKUN",
+            "BOKOD",
+            "BUGUIAS",
+            "CITY OF BAGUIO",
+            "ITOGON",
+            "KABAYAN",
+            "KAPANGAN",
+            "KIBUNGAN",
+            "LA TRINIDAD",
+            "MANKAYAN",
+            "SABLAN",
+            "TUBA",
+            "TUBLAY"
+        ],
+        "BILIRAN": [
+            "ALMERIA",
+            "BILIRAN",
+            "CABUCGAYAN",
+            "CAIBIRAN",
+            "CULABA",
+            "KAWAYAN",
+            "MARIPIPI",
+            "NAVAL"
+        ],
+        "BOHOL": [
+            "ALBURQUERQUE",
+            "ALICIA",
+            "ANDA",
+            "ANTEQUERA",
+            "BACLAYON",
+            "BALILIHAN",
+            "BATUAN",
+            "BIEN UNIDO",
+            "BILAR",
+            "BUENAVISTA",
+            "CALAPE",
+            "CANDIJAY",
+            "CARMEN",
+            "CATIGBIAN",
+            "CITY OF TAGBILARAN",
+            "CLARIN",
+            "CORELLA",
+            "CORTES",
+            "DAGOHOY",
+            "DANAO",
+            "DAUIS",
+            "DIMIAO",
+            "DUERO",
+            "GARCIA HERNANDEZ",
+            "GETAFE",
+            "GUINDULMAN",
+            "INABANGA",
+            "JAGNA",
+            "LILA",
+            "LOAY",
+            "LOBOC",
+            "LOON",
+            "MABINI",
+            "MARIBOJOC",
+            "PANGLAO",
+            "PILAR",
+            "PRESIDENT CARLOS P. GARCIA",
+            "SAGBAYAN",
+            "SAN ISIDRO",
+            "SAN MIGUEL",
+            "SEVILLA",
+            "SIERRA BULLONES",
+            "SIKATUNA",
+            "TALIBON",
+            "TRINIDAD",
+            "TUBIGON",
+            "UBAY",
+            "VALENCIA"
+        ],
+        "BUKIDNON": [
+            "BAUNGON",
+            "CABANGLASAN",
+            "CITY OF MALAYBALAY",
+            "CITY OF VALENCIA",
+            "DAMULOG",
+            "DANGCAGAN",
+            "DON CARLOS",
+            "IMPASUG-ONG",
+            "KADINGILAN",
+            "KALILANGAN",
+            "KIBAWE",
+            "KITAOTAO",
+            "LANTAPAN",
+            "LIBONA",
+            "MALITBOG",
+            "MANOLO FORTICH",
+            "MARAMAG",
+            "PANGANTUCAN",
+            "QUEZON",
+            "SAN FERNANDO",
+            "SUMILAO",
+            "TALAKAG"
+        ],
+        "BULACAN": [
+            "ANGAT",
+            "BALAGTAS",
+            "BOCAUE",
+            "BULACAN",
+            "BUSTOS",
+            "CALUMPIT",
+            "CITY OF BALIWAG",
+            "CITY OF MALOLOS",
+            "CITY OF MEYCAUAYAN",
+            "CITY OF SAN JOSE DEL MONTE",
+            "DOÑA REMEDIOS TRINIDAD",
+            "GUIGUINTO",
+            "HAGONOY",
+            "MARILAO",
+            "NORZAGARAY",
+            "OBANDO",
+            "PANDI",
+            "PAOMBONG",
+            "PLARIDEL",
+            "PULILAN",
+            "SAN ILDEFONSO",
+            "SAN MIGUEL",
+            "SAN RAFAEL",
+            "SANTA MARIA"
+        ],
+        "CAGAYAN": [
+            "ABULUG",
+            "ALCALA",
+            "ALLACAPAN",
+            "AMULUNG",
+            "APARRI",
+            "BAGGAO",
+            "BALLESTEROS",
+            "BUGUEY",
+            "CALAYAN",
+            "CAMALANIUGAN",
+            "CLAVERIA",
+            "ENRILE",
+            "GATTARAN",
+            "GONZAGA",
+            "IGUIG",
+            "LAL-LO",
+            "LASAM",
+            "PAMPLONA",
+            "PEÑABLANCA",
+            "PIAT",
+            "RIZAL",
+            "SANCHEZ-MIRA",
+            "SANTA ANA",
+            "SANTA PRAXEDES",
+            "SANTA TERESITA",
+            "SANTO NIÑO",
+            "SOLANA",
+            "TUAO",
+            "TUGUEGARAO CITY"
+        ],
+        "CAMARINES NORTE": [
+            "BASUD",
+            "CAPALONGA",
+            "DAET",
+            "JOSE PANGANIBAN",
+            "LABO",
+            "MERCEDES",
+            "PARACALE",
+            "SAN LORENZO RUIZ",
+            "SAN VICENTE",
+            "SANTA ELENA",
+            "TALISAY",
+            "VINZONS"
+        ],
+        "CAMARINES SUR": [
+            "BAAO",
+            "BALATAN",
+            "BATO",
+            "BOMBON",
+            "BUHI",
+            "BULA",
+            "CABUSAO",
+            "CALABANGA",
+            "CAMALIGAN",
+            "CANAMAN",
+            "CARAMOAN",
+            "CITY OF IRIGA",
+            "CITY OF NAGA",
+            "DEL GALLEGO",
+            "GAINZA",
+            "GARCHITORENA",
+            "GOA",
+            "LAGONOY",
+            "LIBMANAN",
+            "LUPI",
+            "MAGARAO",
+            "MILAOR",
+            "MINALABAC",
+            "NABUA",
+            "OCAMPO",
+            "PAMPLONA",
+            "PASACAO",
+            "PILI",
+            "PRESENTACION",
+            "RAGAY",
+            "SAGÑAY",
+            "SAN FERNANDO",
+            "SAN JOSE",
+            "SIPOCOT",
+            "SIRUMA",
+            "TIGAON",
+            "TINAMBAC"
+        ],
+        "CAMIGUIN": [
+            "CATARMAN",
+            "GUINSILIBAN",
+            "MAHINOG",
+            "MAMBAJAO",
+            "SAGAY"
+        ],
+        "CAPIZ": [
+            "CITY OF ROXAS",
+            "CUARTERO",
+            "DAO",
+            "DUMALAG",
+            "DUMARAO",
+            "IVISAN",
+            "JAMINDAN",
+            "MA-AYON",
+            "MAMBUSAO",
+            "PANAY",
+            "PANITAN",
+            "PILAR",
+            "PONTEVEDRA",
+            "PRESIDENT ROXAS",
+            "SAPI-AN",
+            "SIGMA",
+            "TAPAZ"
+        ],
+        "CATANDUANES": [
+            "BAGAMANOC",
+            "BARAS",
+            "BATO",
+            "CARAMORAN",
+            "GIGMOTO",
+            "PANDAN",
+            "PANGANIBAN",
+            "SAN ANDRES",
+            "SAN MIGUEL",
+            "VIGA",
+            "VIRAC"
+        ],
+        "CAVITE": [
+            "ALFONSO",
+            "AMADEO",
+            "CITY OF BACOOR",
+            "CITY OF CARMONA",
+            "CITY OF CAVITE",
+            "CITY OF DASMARIÑAS",
+            "CITY OF GENERAL TRIAS",
+            "CITY OF IMUS",
+            "CITY OF TAGAYTAY",
+            "CITY OF TRECE MARTIRES",
+            "GEN. MARIANO ALVAREZ",
+            "GENERAL EMILIO AGUINALDO",
+            "INDANG",
+            "KAWIT",
+            "MAGALLANES",
+            "MARAGONDON",
+            "MENDEZ",
+            "NAIC",
+            "NOVELETA",
+            "ROSARIO",
+            "SILANG",
+            "TANZA",
+            "TERNATE"
+        ],
+        "CEBU": [
+            "ALCANTARA",
+            "ALCOY",
+            "ALEGRIA",
+            "ALOGUINSAN",
+            "ARGAO",
+            "ASTURIAS",
+            "BADIAN",
+            "BALAMBAN",
+            "BANTAYAN",
+            "BARILI",
+            "BOLJOON",
+            "BORBON",
+            "CARMEN",
+            "CATMON",
+            "CITY OF BOGO",
+            "CITY OF CARCAR",
+            "CITY OF CEBU",
+            "CITY OF LAPU-LAPU",
+            "CITY OF MANDAUE",
+            "CITY OF NAGA",
+            "CITY OF TALISAY",
+            "CITY OF TOLEDO",
+            "COMPOSTELA",
+            "CONSOLACION",
+            "CORDOVA",
+            "DAANBANTAYAN",
+            "DALAGUETE",
+            "DANAO CITY",
+            "DUMANJUG",
+            "GINATILAN",
+            "LILOAN",
+            "MADRIDEJOS",
+            "MALABUYOC",
+            "MEDELLIN",
+            "MINGLANILLA",
+            "MOALBOAL",
+            "OSLOB",
+            "PILAR",
+            "PINAMUNGAJAN",
+            "PORO",
+            "RONDA",
+            "SAMBOAN",
+            "SAN FERNANDO",
+            "SAN FRANCISCO",
+            "SAN REMIGIO",
+            "SANTA FE",
+            "SANTANDER",
+            "SIBONGA",
+            "SOGOD",
+            "TABOGON",
+            "TABUELAN",
+            "TUBURAN",
+            "TUDELA"
+        ],
+        "COTABATO": [
+            "ALAMADA",
+            "ALEOSAN",
+            "ANTIPAS",
+            "ARAKAN",
+            "BANISILAN",
+            "CARMEN",
+            "CITY OF KIDAPAWAN",
+            "KABACAN",
+            "LIBUNGAN",
+            "MAGPET",
+            "MAKILALA",
+            "MATALAM",
+            "MIDSAYAP",
+            "M'LANG",
+            "PIGKAWAYAN",
+            "PIKIT",
+            "PRESIDENT ROXAS",
+            "TULUNAN"
+        ],
+        "DAVAO DE ORO": [
+            "COMPOSTELA",
+            "LAAK",
+            "MABINI",
+            "MACO",
+            "MARAGUSAN",
+            "MAWAB",
+            "MONKAYO",
+            "MONTEVISTA",
+            "NABUNTURAN",
+            "NEW BATAAN",
+            "PANTUKAN"
+        ],
+        "DAVAO DEL NORTE": [
+            "ASUNCION",
+            "BRAULIO E. DUJALI",
+            "CARMEN",
+            "CITY OF PANABO",
+            "CITY OF TAGUM",
+            "ISLAND GARDEN CITY OF SAMAL",
+            "KAPALONG",
+            "NEW CORELLA",
+            "SAN ISIDRO",
+            "SANTO TOMAS",
+            "TALAINGOD"
+        ],
+        "DAVAO DEL SUR": [
+            "BANSALAN",
+            "CITY OF DAVAO",
+            "CITY OF DIGOS",
+            "HAGONOY",
+            "KIBLAWAN",
+            "MAGSAYSAY",
+            "MALALAG",
+            "MATANAO",
+            "PADADA",
+            "SANTA CRUZ",
+            "SULOP"
+        ],
+        "DAVAO OCCIDENTAL": [
+            "DON MARCELINO",
+            "JOSE ABAD SANTOS",
+            "MALITA",
+            "SANTA MARIA",
+            "SARANGANI"
+        ],
+        "DAVAO ORIENTAL": [
+            "BAGANGA",
+            "BANAYBANAY",
+            "BOSTON",
+            "CARAGA",
+            "CATEEL",
+            "CITY OF MATI",
+            "GOVERNOR GENEROSO",
+            "LUPON",
+            "MANAY",
+            "SAN ISIDRO",
+            "TARRAGONA"
+        ],
+        "DINAGAT ISLANDS": [
+            "BASILISA",
+            "CAGDIANAO",
+            "DINAGAT",
+            "LIBJO",
+            "LORETO",
+            "SAN JOSE",
+            "TUBAJON"
+        ],
+        "EASTERN SAMAR": [
+            "ARTECHE",
+            "BALANGIGA",
+            "BALANGKAYAN",
+            "CAN-AVID",
+            "CITY OF BORONGAN",
+            "DOLORES",
+            "GENERAL MACARTHUR",
+            "GIPORLOS",
+            "GUIUAN",
+            "HERNANI",
+            "JIPAPAD",
+            "LAWAAN",
+            "LLORENTE",
+            "MASLOG",
+            "MAYDOLONG",
+            "MERCEDES",
+            "ORAS",
+            "QUINAPONDAN",
+            "SALCEDO",
+            "SAN JULIAN",
+            "SAN POLICARPO",
+            "SULAT",
+            "TAFT"
+        ],
+        "GUIMARAS": [
+            "BUENAVISTA",
+            "JORDAN",
+            "NUEVA VALENCIA",
+            "SAN LORENZO",
+            "SIBUNAG"
+        ],
+        "IFUGAO": [
+            "AGUINALDO",
+            "ALFONSO LISTA",
+            "ASIPULO",
+            "BANAUE",
+            "HINGYON",
+            "HUNGDUAN",
+            "KIANGAN",
+            "LAGAWE",
+            "LAMUT",
+            "MAYOYAO",
+            "TINOC"
+        ],
+        "ILOCOS NORTE": [
+            "ADAMS",
+            "BACARRA",
+            "BADOC",
+            "BANGUI",
+            "BANNA",
+            "BURGOS",
+            "CARASI",
+            "CITY OF BATAC",
+            "CITY OF LAOAG",
+            "CURRIMAO",
+            "DINGRAS",
+            "DUMALNEG",
+            "MARCOS",
+            "NUEVA ERA",
+            "PAGUDPUD",
+            "PAOAY",
+            "PASUQUIN",
+            "PIDDIG",
+            "PINILI",
+            "SAN NICOLAS",
+            "SARRAT",
+            "SOLSONA",
+            "VINTAR"
+        ],
+        "ILOCOS SUR": [
+            "ALILEM",
+            "BANAYOYO",
+            "BANTAY",
+            "BURGOS",
+            "CABUGAO",
+            "CAOAYAN",
+            "CERVANTES",
+            "CITY OF CANDON",
+            "CITY OF VIGAN",
+            "GALIMUYOD",
+            "GREGORIO DEL PILAR",
+            "LIDLIDDA",
+            "MAGSINGAL",
+            "NAGBUKEL",
+            "NARVACAN",
+            "QUIRINO",
+            "SALCEDO",
+            "SAN EMILIO",
+            "SAN ESTEBAN",
+            "SAN ILDEFONSO",
+            "SAN JUAN",
+            "SAN VICENTE",
+            "SANTA",
+            "SANTA CATALINA",
+            "SANTA CRUZ",
+            "SANTA LUCIA",
+            "SANTA MARIA",
+            "SANTIAGO",
+            "SANTO DOMINGO",
+            "SIGAY",
+            "SINAIT",
+            "SUGPON",
+            "SUYO",
+            "TAGUDIN"
+        ],
+        "ILOILO": [
+            "AJUY",
+            "ALIMODIAN",
+            "ANILAO",
+            "BADIANGAN",
+            "BALASAN",
+            "BANATE",
+            "BAROTAC NUEVO",
+            "BAROTAC VIEJO",
+            "BATAD",
+            "BINGAWAN",
+            "CABATUAN",
+            "CALINOG",
+            "CARLES",
+            "CITY OF ILOILO",
+            "CITY OF PASSI",
+            "CONCEPCION",
+            "DINGLE",
+            "DUEÑAS",
+            "DUMANGAS",
+            "ESTANCIA",
+            "GUIMBAL",
+            "IGBARAS",
+            "JANIUAY",
+            "LAMBUNAO",
+            "LEGANES",
+            "LEMERY",
+            "LEON",
+            "MAASIN",
+            "MIAGAO",
+            "MINA",
+            "NEW LUCENA",
+            "OTON",
+            "PAVIA",
+            "POTOTAN",
+            "SAN DIONISIO",
+            "SAN ENRIQUE",
+            "SAN JOAQUIN",
+            "SAN MIGUEL",
+            "SAN RAFAEL",
+            "SANTA BARBARA",
+            "SARA",
+            "TIGBAUAN",
+            "TUBUNGAN",
+            "ZARRAGA"
+        ],
+        "ISABELA": [
+            "ALICIA",
+            "ANGADANAN",
+            "AURORA",
+            "BENITO SOLIVEN",
+            "BURGOS",
+            "CABAGAN",
+            "CABATUAN",
+            "CITY OF CAUAYAN",
+            "CITY OF ILAGAN",
+            "CITY OF SANTIAGO",
+            "CORDON",
+            "DELFIN ALBANO",
+            "DINAPIGUE",
+            "DIVILACAN",
+            "ECHAGUE",
+            "GAMU",
+            "JONES",
+            "LUNA",
+            "MACONACON",
+            "MALLIG",
+            "NAGUILIAN",
+            "PALANAN",
+            "QUEZON",
+            "QUIRINO",
+            "RAMON",
+            "REINA MERCEDES",
+            "ROXAS",
+            "SAN AGUSTIN",
+            "SAN GUILLERMO",
+            "SAN ISIDRO",
+            "SAN MANUEL",
+            "SAN MARIANO",
+            "SAN MATEO",
+            "SAN PABLO",
+            "SANTA MARIA",
+            "SANTO TOMAS",
+            "TUMAUINI"
+        ],
+        "KALINGA": [
+            "BALBALAN",
+            "CITY OF TABUK",
+            "LUBUAGAN",
+            "PASIL",
+            "PINUKPUK",
+            "RIZAL",
+            "TANUDAN",
+            "TINGLAYAN"
+        ],
+        "LA UNION": [
+            "AGOO",
+            "ARINGAY",
+            "BACNOTAN",
+            "BAGULIN",
+            "BALAOAN",
+            "BANGAR",
+            "BAUANG",
+            "BURGOS",
+            "CABA",
+            "CITY OF SAN FERNANDO",
+            "LUNA",
+            "NAGUILIAN",
+            "PUGO",
+            "ROSARIO",
+            "SAN GABRIEL",
+            "SAN JUAN",
+            "SANTO TOMAS",
+            "SANTOL",
+            "SUDIPEN",
+            "TUBAO"
+        ],
+        "LAGUNA": [
+            "ALAMINOS",
+            "BAY",
+            "CALAUAN",
+            "CAVINTI",
+            "CITY OF BIÑAN",
+            "CITY OF CABUYAO",
+            "CITY OF CALAMBA",
+            "CITY OF SAN PABLO",
+            "CITY OF SAN PEDRO",
+            "CITY OF SANTA ROSA",
+            "FAMY",
+            "KALAYAAN",
+            "LILIW",
+            "LOS BAÑOS",
+            "LUISIANA",
+            "LUMBAN",
+            "MABITAC",
+            "MAGDALENA",
+            "MAJAYJAY",
+            "NAGCARLAN",
+            "PAETE",
+            "PAGSANJAN",
+            "PAKIL",
+            "PANGIL",
+            "PILA",
+            "RIZAL",
+            "SANTA CRUZ",
+            "SANTA MARIA",
+            "SINILOAN",
+            "VICTORIA"
+        ],
+        "LANAO DEL NORTE": [
+            "BACOLOD",
+            "BALOI",
+            "BAROY",
+            "CITY OF ILIGAN",
+            "KAPATAGAN",
+            "KAUSWAGAN",
+            "KOLAMBUGAN",
+            "LALA",
+            "LINAMON",
+            "MAGSAYSAY",
+            "MAIGO",
+            "MATUNGAO",
+            "MUNAI",
+            "NUNUNGAN",
+            "PANTAO RAGAT",
+            "PANTAR",
+            "POONA PIAGAPO",
+            "SALVADOR",
+            "SAPAD",
+            "SULTAN NAGA DIMAPORO",
+            "TAGOLOAN",
+            "TANGCAL",
+            "TUBOD"
+        ],
+        "LANAO DEL SUR": [
+            "AMAI MANABILANG",
+            "BACOLOD-KALAWI",
+            "BALABAGAN",
+            "BALINDONG",
+            "BAYANG",
+            "BINIDAYAN",
+            "BUADIPOSO-BUNTONG",
+            "BUBONG",
+            "BUTIG",
+            "CALANOGAS",
+            "CITY OF MARAWI",
+            "DITSAAN-RAMAIN",
+            "GANASSI",
+            "KAPAI",
+            "KAPATAGAN",
+            "LUMBA-BAYABAO",
+            "LUMBACA-UNAYAN",
+            "LUMBATAN",
+            "LUMBAYANAGUE",
+            "MADALUM",
+            "MADAMBA",
+            "MAGUING",
+            "MALABANG",
+            "MARANTAO",
+            "MAROGONG",
+            "MASIU",
+            "MULONDO",
+            "PAGAYAWAN",
+            "PIAGAPO",
+            "PICONG",
+            "POONA BAYABAO",
+            "PUALAS",
+            "SAGUIARAN",
+            "SULTAN DUMALONDONG",
+            "TAGOLOAN II",
+            "TAMPARAN",
+            "TARAKA",
+            "TUBARAN",
+            "TUGAYA",
+            "WAO"
+        ],
+        "LEYTE": [
+            "ABUYOG",
+            "ALANGALANG",
+            "ALBUERA",
+            "BABATNGON",
+            "BARUGO",
+            "BATO",
+            "BURAUEN",
+            "CALUBIAN",
+            "CAPOOCAN",
+            "CARIGARA",
+            "CITY OF BAYBAY",
+            "CITY OF TACLOBAN",
+            "DAGAMI",
+            "DULAG",
+            "HILONGOS",
+            "HINDANG",
+            "INOPACAN",
+            "ISABEL",
+            "JARO",
+            "JAVIER",
+            "JULITA",
+            "KANANGA",
+            "LA PAZ",
+            "LEYTE",
+            "MACARTHUR",
+            "MAHAPLAG",
+            "MATAG-OB",
+            "MATALOM",
+            "MAYORGA",
+            "MERIDA",
+            "ORMOC CITY",
+            "PALO",
+            "PALOMPON",
+            "PASTRANA",
+            "SAN ISIDRO",
+            "SAN MIGUEL",
+            "SANTA FE",
+            "TABANGO",
+            "TABONTABON",
+            "TANAUAN",
+            "TOLOSA",
+            "TUNGA",
+            "VILLABA"
+        ],
+        "MAGUINDANAO DEL NORTE": [
+            "BARIRA",
+            "BULDON",
+            "CITY OF COTABATO",
+            "DATU BLAH T. SINSUAT",
+            "DATU ODIN SINSUAT",
+            "KABUNTALAN",
+            "MATANOG",
+            "NORTHERN KABUNTALAN",
+            "PARANG",
+            "SULTAN KUDARAT",
+            "SULTAN MASTURA",
+            "TALITAY",
+            "UPI"
+        ],
+        "MAGUINDANAO DEL SUR": [
+            "AMPATUAN",
+            "BULUAN",
+            "DATU ABDULLAH SANGKI",
+            "DATU ANGGAL MIDTIMBANG",
+            "DATU HOFFER AMPATUAN",
+            "DATU PAGLAS",
+            "DATU PIANG",
+            "DATU SALIBO",
+            "DATU SAUDI AMPATUAN",
+            "DATU UNSAY",
+            "GEN. S.K. PENDATUN",
+            "GUINDULUNGAN",
+            "MAMASAPANO",
+            "MANGUDADATU",
+            "PAGAGAWAN",
+            "PAGALUNGAN",
+            "PAGLAT",
+            "PANDAG",
+            "RAJAH BUAYAN",
+            "SHARIFF AGUAK",
+            "SHARIFF SAYDONA MUSTAPHA",
+            "SOUTH UPI",
+            "SULTAN SA BARONGIS",
+            "TALAYAN"
+        ],
+        "MARINDUQUE": [
+            "BOAC",
+            "BUENAVISTA",
+            "GASAN",
+            "MOGPOG",
+            "SANTA CRUZ",
+            "TORRIJOS"
+        ],
+        "MASBATE": [
+            "AROROY",
+            "BALENO",
+            "BALUD",
+            "BATUAN",
+            "CATAINGAN",
+            "CAWAYAN",
+            "CITY OF MASBATE",
+            "CLAVERIA",
+            "DIMASALANG",
+            "ESPERANZA",
+            "MANDAON",
+            "MILAGROS",
+            "MOBO",
+            "MONREAL",
+            "PALANAS",
+            "PIO V. CORPUS",
+            "PLACER",
+            "SAN FERNANDO",
+            "SAN JACINTO",
+            "SAN PASCUAL",
+            "USON"
+        ],
+        "METRO MANILA": [
+            "BINONDO",
+            "CITY OF CALOOCAN",
+            "CITY OF LAS PIÑAS",
+            "CITY OF MAKATI",
+            "CITY OF MALABON",
+            "CITY OF MANDALUYONG",
+            "CITY OF MARIKINA",
+            "CITY OF MUNTINLUPA",
+            "CITY OF NAVOTAS",
+            "CITY OF PARAÑAQUE",
+            "CITY OF PASIG",
+            "CITY OF SAN JUAN",
+            "CITY OF TAGUIG",
+            "CITY OF VALENZUELA",
+            "ERMITA",
+            "INTRAMUROS",
+            "MALATE",
+            "PACO",
+            "PANDACAN",
+            "PASAY CITY",
+            "PATEROS",
+            "PORT AREA",
+            "QUEZON CITY",
+            "QUIAPO",
+            "SAMPALOC",
+            "SAN MIGUEL",
+            "SAN NICOLAS",
+            "SANTA ANA",
+            "SANTA CRUZ",
+            "TONDO I/II"
+        ],
+        "MISAMIS OCCIDENTAL": [
+            "ALORAN",
+            "BALIANGAO",
+            "BONIFACIO",
+            "CALAMBA",
+            "CITY OF OROQUIETA",
+            "CITY OF OZAMIZ",
+            "CITY OF TANGUB",
+            "CLARIN",
+            "CONCEPCION",
+            "DON VICTORIANO CHIONGBIAN",
+            "JIMENEZ",
+            "LOPEZ JAENA",
+            "PANAON",
+            "PLARIDEL",
+            "SAPANG DALAGA",
+            "SINACABAN",
+            "TUDELA"
+        ],
+        "MISAMIS ORIENTAL": [
+            "ALUBIJID",
+            "BALINGASAG",
+            "BALINGOAN",
+            "BINUANGAN",
+            "CITY OF CAGAYAN DE ORO",
+            "CITY OF EL SALVADOR",
+            "CITY OF GINGOOG",
+            "CLAVERIA",
+            "GITAGUM",
+            "INITAO",
+            "JASAAN",
+            "KINOGUITAN",
+            "LAGONGLONG",
+            "LAGUINDINGAN",
+            "LIBERTAD",
+            "LUGAIT",
+            "MAGSAYSAY",
+            "MANTICAO",
+            "MEDINA",
+            "NAAWAN",
+            "OPOL",
+            "SALAY",
+            "SUGBONGCOGON",
+            "TAGOLOAN",
+            "TALISAYAN",
+            "VILLANUEVA"
+        ],
+        "MOUNTAIN PROVINCE": [
+            "BARLIG",
+            "BAUKO",
+            "BESAO",
+            "BONTOC",
+            "NATONIN",
+            "PARACELIS",
+            "SABANGAN",
+            "SADANGA",
+            "SAGADA",
+            "TADIAN"
+        ],
+        "NEGROS OCCIDENTAL": [
+            "BINALBAGAN",
+            "CALATRAVA",
+            "CANDONI",
+            "CAUAYAN",
+            "CITY OF BACOLOD",
+            "CITY OF BAGO",
+            "CITY OF CADIZ",
+            "CITY OF ESCALANTE",
+            "CITY OF HIMAMAYLAN",
+            "CITY OF KABANKALAN",
+            "CITY OF LA CARLOTA",
+            "CITY OF SAGAY",
+            "CITY OF SAN CARLOS",
+            "CITY OF SILAY",
+            "CITY OF SIPALAY",
+            "CITY OF TALISAY",
+            "CITY OF VICTORIAS",
+            "ENRIQUE B. MAGALONA",
+            "HINIGARAN",
+            "HINOBA-AN",
+            "ILOG",
+            "ISABELA",
+            "LA CASTELLANA",
+            "MANAPLA",
+            "MOISES PADILLA",
+            "MURCIA",
+            "PONTEVEDRA",
+            "PULUPANDAN",
+            "SALVADOR BENEDICTO",
+            "SAN ENRIQUE",
+            "TOBOSO",
+            "VALLADOLID"
+        ],
+        "NEGROS ORIENTAL": [
+            "AMLAN",
+            "AYUNGON",
+            "BACONG",
+            "BASAY",
+            "BINDOY",
+            "CITY OF BAIS",
+            "CITY OF BAYAWAN",
+            "CITY OF CANLAON",
+            "CITY OF DUMAGUETE",
+            "CITY OF GUIHULNGAN",
+            "CITY OF TANJAY",
+            "DAUIN",
+            "JIMALALUD",
+            "LA LIBERTAD",
+            "MABINAY",
+            "MANJUYOD",
+            "PAMPLONA",
+            "SAN JOSE",
+            "SANTA CATALINA",
+            "SIATON",
+            "SIBULAN",
+            "TAYASAN",
+            "VALENCIA",
+            "VALLEHERMOSO",
+            "ZAMBOANGUITA"
+        ],
+        "NORTHERN SAMAR": [
+            "ALLEN",
+            "BIRI",
+            "BOBON",
+            "CAPUL",
+            "CATARMAN",
+            "CATUBIG",
+            "GAMAY",
+            "LAOANG",
+            "LAPINIG",
+            "LAS NAVAS",
+            "LAVEZARES",
+            "LOPE DE VEGA",
+            "MAPANAS",
+            "MONDRAGON",
+            "PALAPAG",
+            "PAMBUJAN",
+            "ROSARIO",
+            "SAN ANTONIO",
+            "SAN ISIDRO",
+            "SAN JOSE",
+            "SAN ROQUE",
+            "SAN VICENTE",
+            "SILVINO LOBOS",
+            "VICTORIA"
+        ],
+        "NUEVA ECIJA": [
+            "ALIAGA",
+            "BONGABON",
+            "CABIAO",
+            "CARRANGLAN",
+            "CITY OF CABANATUAN",
+            "CITY OF GAPAN",
+            "CITY OF PALAYAN",
+            "CUYAPO",
+            "GABALDON",
+            "GENERAL MAMERTO NATIVIDAD",
+            "GENERAL TINIO",
+            "GUIMBA",
+            "JAEN",
+            "LAUR",
+            "LICAB",
+            "LLANERA",
+            "LUPAO",
+            "NAMPICUAN",
+            "PANTABANGAN",
+            "PEÑARANDA",
+            "QUEZON",
+            "RIZAL",
+            "SAN ANTONIO",
+            "SAN ISIDRO",
+            "SAN JOSE CITY",
+            "SAN LEONARDO",
+            "SANTA ROSA",
+            "SANTO DOMINGO",
+            "SCIENCE CITY OF MUÑOZ",
+            "TALAVERA",
+            "TALUGTUG",
+            "ZARAGOZA"
+        ],
+        "NUEVA VIZCAYA": [
+            "ALFONSO CASTANEDA",
+            "AMBAGUIO",
+            "ARITAO",
+            "BAGABAG",
+            "BAMBANG",
+            "BAYOMBONG",
+            "DIADI",
+            "DUPAX DEL NORTE",
+            "DUPAX DEL SUR",
+            "KASIBU",
+            "KAYAPA",
+            "QUEZON",
+            "SANTA FE",
+            "SOLANO",
+            "VILLAVERDE"
+        ],
+        "OCCIDENTAL MINDORO": [
+            "ABRA DE ILOG",
+            "CALINTAAN",
+            "LOOC",
+            "LUBANG",
+            "MAGSAYSAY",
+            "MAMBURAO",
+            "PALUAN",
+            "RIZAL",
+            "SABLAYAN",
+            "SAN JOSE",
+            "SANTA CRUZ"
+        ],
+        "ORIENTAL MINDORO": [
+            "BACO",
+            "BANSUD",
+            "BONGABONG",
+            "BULALACAO",
+            "CITY OF CALAPAN",
+            "GLORIA",
+            "MANSALAY",
+            "NAUJAN",
+            "PINAMALAYAN",
+            "POLA",
+            "PUERTO GALERA",
+            "ROXAS",
+            "SAN TEODORO",
+            "SOCORRO",
+            "VICTORIA"
+        ],
+        "PALAWAN": [
+            "ABORLAN",
+            "AGUTAYA",
+            "ARACELI",
+            "BALABAC",
+            "BATARAZA",
+            "BROOKE'S POINT",
+            "BUSUANGA",
+            "CAGAYANCILLO",
+            "CITY OF PUERTO PRINCESA",
+            "CORON",
+            "CULION",
+            "CUYO",
+            "DR. JOSE P. RIZAL",
+            "DUMARAN",
+            "EL NIDO",
+            "KALAYAAN",
+            "LINAPACAN",
+            "MAGSAYSAY",
+            "NARRA",
+            "QUEZON",
+            "ROXAS",
+            "SAN VICENTE",
+            "SOFRONIO ESPAÑOLA",
+            "TAYTAY"
+        ],
+        "PAMPANGA": [
+            "APALIT",
+            "ARAYAT",
+            "BACOLOR",
+            "CANDABA",
+            "CITY OF ANGELES",
+            "CITY OF SAN FERNANDO",
+            "FLORIDABLANCA",
+            "GUAGUA",
+            "LUBAO",
+            "MABALACAT CITY",
+            "MACABEBE",
+            "MAGALANG",
+            "MASANTOL",
+            "MEXICO",
+            "MINALIN",
+            "PORAC",
+            "SAN LUIS",
+            "SAN SIMON",
+            "SANTA ANA",
+            "SANTA RITA",
+            "SASMUAN",
+            "STO. TOMAS"
+        ],
+        "PANGASINAN": [
+            "AGNO",
+            "AGUILAR",
+            "ALCALA",
+            "ANDA",
+            "ASINGAN",
+            "BALUNGAO",
+            "BANI",
+            "BASISTA",
+            "BAUTISTA",
+            "BAYAMBANG",
+            "BINALONAN",
+            "BINMALEY",
+            "BOLINAO",
+            "BUGALLON",
+            "BURGOS",
+            "CALASIAO",
+            "CITY OF ALAMINOS",
+            "CITY OF DAGUPAN",
+            "CITY OF SAN CARLOS",
+            "CITY OF URDANETA",
+            "DASOL",
+            "INFANTA",
+            "LABRADOR",
+            "LAOAC",
+            "LINGAYEN",
+            "MABINI",
+            "MALASIQUI",
+            "MANAOAG",
+            "MANGALDAN",
+            "MANGATAREM",
+            "MAPANDAN",
+            "NATIVIDAD",
+            "POZORRUBIO",
+            "ROSALES",
+            "SAN FABIAN",
+            "SAN JACINTO",
+            "SAN MANUEL",
+            "SAN NICOLAS",
+            "SAN QUINTIN",
+            "SANTA BARBARA",
+            "SANTA MARIA",
+            "SANTO TOMAS",
+            "SISON",
+            "SUAL",
+            "TAYUG",
+            "UMINGAN",
+            "URBIZTONDO",
+            "VILLASIS"
+        ],
+        "QUEZON": [
+            "AGDANGAN",
+            "ALABAT",
+            "ATIMONAN",
+            "BUENAVISTA",
+            "BURDEOS",
+            "CALAUAG",
+            "CANDELARIA",
+            "CATANAUAN",
+            "CITY OF LUCENA",
+            "CITY OF TAYABAS",
+            "DOLORES",
+            "GENERAL LUNA",
+            "GENERAL NAKAR",
+            "GUINAYANGAN",
+            "GUMACA",
+            "INFANTA",
+            "JOMALIG",
+            "LOPEZ",
+            "LUCBAN",
+            "MACALELON",
+            "MAUBAN",
+            "MULANAY",
+            "PADRE BURGOS",
+            "PAGBILAO",
+            "PANUKULAN",
+            "PATNANUNGAN",
+            "PEREZ",
+            "PITOGO",
+            "PLARIDEL",
+            "POLILLO",
+            "QUEZON",
+            "REAL",
+            "SAMPALOC",
+            "SAN ANDRES",
+            "SAN ANTONIO",
+            "SAN FRANCISCO",
+            "SAN NARCISO",
+            "SARIAYA",
+            "TAGKAWAYAN",
+            "TIAONG",
+            "UNISAN"
+        ],
+        "QUIRINO": [
+            "AGLIPAY",
+            "CABARROGUIS",
+            "DIFFUN",
+            "MADDELA",
+            "NAGTIPUNAN",
+            "SAGUDAY"
+        ],
+        "RIZAL": [
+            "ANGONO",
+            "BARAS",
+            "BINANGONAN",
+            "CAINTA",
+            "CARDONA",
+            "CITY OF ANTIPOLO",
+            "JALA-JALA",
+            "MORONG",
+            "PILILLA",
+            "RODRIGUEZ",
+            "SAN MATEO",
+            "TANAY",
+            "TAYTAY",
+            "TERESA"
+        ],
+        "ROMBLON": [
+            "ALCANTARA",
+            "BANTON",
+            "CAJIDIOCAN",
+            "CALATRAVA",
+            "CONCEPCION",
+            "CORCUERA",
+            "FERROL",
+            "LOOC",
+            "MAGDIWANG",
+            "ODIONGAN",
+            "ROMBLON",
+            "SAN AGUSTIN",
+            "SAN ANDRES",
+            "SAN FERNANDO",
+            "SAN JOSE",
+            "SANTA FE",
+            "SANTA MARIA"
+        ],
+        "SAMAR": [
+            "ALMAGRO",
+            "BASEY",
+            "CALBIGA",
+            "CITY OF CALBAYOG",
+            "CITY OF CATBALOGAN",
+            "DARAM",
+            "GANDARA",
+            "HINABANGAN",
+            "JIABONG",
+            "MARABUT",
+            "MATUGUINAO",
+            "MOTIONG",
+            "PAGSANGHAN",
+            "PARANAS",
+            "PINABACDAO",
+            "SAN JORGE",
+            "SAN JOSE DE BUAN",
+            "SAN SEBASTIAN",
+            "SANTA MARGARITA",
+            "SANTA RITA",
+            "SANTO NIÑO",
+            "TAGAPUL-AN",
+            "TALALORA",
+            "TARANGNAN",
+            "VILLAREAL",
+            "ZUMARRAGA"
+        ],
+        "SARANGANI": [
+            "ALABEL",
+            "GLAN",
+            "KIAMBA",
+            "MAASIM",
+            "MAITUM",
+            "MALAPATAN",
+            "MALUNGON"
+        ],
+        "SIQUIJOR": [
+            "ENRIQUE VILLANUEVA",
+            "LARENA",
+            "LAZI",
+            "MARIA",
+            "SAN JUAN",
+            "SIQUIJOR"
+        ],
+        "SORSOGON": [
+            "BARCELONA",
+            "BULAN",
+            "BULUSAN",
+            "CASIGURAN",
+            "CASTILLA",
+            "CITY OF SORSOGON",
+            "DONSOL",
+            "GUBAT",
+            "IROSIN",
+            "JUBAN",
+            "MAGALLANES",
+            "MATNOG",
+            "PILAR",
+            "PRIETO DIAZ",
+            "SANTA MAGDALENA"
+        ],
+        "SOUTH COTABATO": [
+            "BANGA",
+            "CITY OF GENERAL SANTOS",
+            "CITY OF KORONADAL",
+            "LAKE SEBU",
+            "NORALA",
+            "POLOMOLOK",
+            "SANTO NIÑO",
+            "SURALLAH",
+            "TAMPAKAN",
+            "TANTANGAN",
+            "T'BOLI",
+            "TUPI"
+        ],
+        "SOUTHERN LEYTE": [
+            "ANAHAWAN",
+            "BONTOC",
+            "CITY OF MAASIN",
+            "HINUNANGAN",
+            "HINUNDAYAN",
+            "LIBAGON",
+            "LILOAN",
+            "LIMASAWA",
+            "MACROHON",
+            "MALITBOG",
+            "PADRE BURGOS",
+            "PINTUYAN",
+            "SAINT BERNARD",
+            "SAN FRANCISCO",
+            "SAN JUAN",
+            "SAN RICARDO",
+            "SILAGO",
+            "SOGOD",
+            "TOMAS OPPUS"
+        ],
+        "SULTAN KUDARAT": [
+            "BAGUMBAYAN",
+            "CITY OF TACURONG",
+            "COLUMBIO",
+            "ESPERANZA",
+            "ISULAN",
+            "KALAMANSIG",
+            "LAMBAYONG",
+            "LEBAK",
+            "LUTAYAN",
+            "PALIMBANG",
+            "PRESIDENT QUIRINO",
+            "SEN. NINOY AQUINO"
+        ],
+        "SULU": [
+            "HADJI PANGLIMA TAHIL",
+            "INDANAN",
+            "JOLO",
+            "KALINGALAN CALUANG",
+            "LUGUS",
+            "LUUK",
+            "MAIMBUNG",
+            "OLD PANAMAO",
+            "OMAR",
+            "PANDAMI",
+            "PANGLIMA ESTINO",
+            "PANGUTARAN",
+            "PARANG",
+            "PATA",
+            "PATIKUL",
+            "SIASI",
+            "TALIPAO",
+            "TAPUL",
+            "TONGKIL"
+        ],
+        "SURIGAO DEL NORTE": [
+            "ALEGRIA",
+            "BACUAG",
+            "BURGOS",
+            "CITY OF SURIGAO",
+            "CLAVER",
+            "DAPA",
+            "DEL CARMEN",
+            "GENERAL LUNA",
+            "GIGAQUIT",
+            "MAINIT",
+            "MALIMONO",
+            "PILAR",
+            "PLACER",
+            "SAN BENITO",
+            "SAN FRANCISCO",
+            "SAN ISIDRO",
+            "SANTA MONICA",
+            "SISON",
+            "SOCORRO",
+            "TAGANA-AN",
+            "TUBOD"
+        ],
+        "SURIGAO DEL SUR": [
+            "BAROBO",
+            "BAYABAS",
+            "CAGWAIT",
+            "CANTILAN",
+            "CARMEN",
+            "CARRASCAL",
+            "CITY OF BISLIG",
+            "CITY OF TANDAG",
+            "CORTES",
+            "HINATUAN",
+            "LANUZA",
+            "LIANGA",
+            "LINGIG",
+            "MADRID",
+            "MARIHATAG",
+            "SAN AGUSTIN",
+            "SAN MIGUEL",
+            "TAGBINA",
+            "TAGO"
+        ],
+        "TARLAC": [
+            "ANAO",
+            "BAMBAN",
+            "CAMILING",
+            "CAPAS",
+            "CITY OF TARLAC",
+            "CONCEPCION",
+            "GERONA",
+            "LA PAZ",
+            "MAYANTOC",
+            "MONCADA",
+            "PANIQUI",
+            "PURA",
+            "RAMOS",
+            "SAN CLEMENTE",
+            "SAN JOSE",
+            "SAN MANUEL",
+            "SANTA IGNACIA",
+            "VICTORIA"
+        ],
+        "TAWI-TAWI": [
+            "BONGAO",
+            "LANGUYAN",
+            "MAPUN",
+            "PANGLIMA SUGALA",
+            "SAPA-SAPA",
+            "SIBUTU",
+            "SIMUNUL",
+            "SITANGKAI",
+            "SOUTH UBIAN",
+            "TANDUBAS",
+            "TURTLE ISLANDS"
+        ],
+        "ZAMBALES": [
+            "BOTOLAN",
+            "CABANGAN",
+            "CANDELARIA",
+            "CASTILLEJOS",
+            "CITY OF OLONGAPO",
+            "IBA",
+            "MASINLOC",
+            "PALAUIG",
+            "SAN ANTONIO",
+            "SAN FELIPE",
+            "SAN MARCELINO",
+            "SAN NARCISO",
+            "SANTA CRUZ",
+            "SUBIC"
+        ],
+        "ZAMBOANGA DEL NORTE": [
+            "BALIGUIAN",
+            "CITY OF DAPITAN",
+            "CITY OF DIPOLOG",
+            "GODOD",
+            "GUTALAC",
+            "JOSE DALMAN",
+            "KALAWIT",
+            "KATIPUNAN",
+            "LA LIBERTAD",
+            "LABASON",
+            "LEON T. POSTIGO",
+            "LILOY",
+            "MANUKAN",
+            "MUTIA",
+            "PIÑAN",
+            "POLANCO",
+            "PRES. MANUEL A. ROXAS",
+            "RIZAL",
+            "SALUG",
+            "SERGIO OSMEÑA SR.",
+            "SIAYAN",
+            "SIBUCO",
+            "SIBUTAD",
+            "SINDANGAN",
+            "SIOCON",
+            "SIRAWAI",
+            "TAMPILISAN"
+        ],
+        "ZAMBOANGA DEL SUR": [
+            "AURORA",
+            "BAYOG",
+            "CITY OF PAGADIAN",
+            "CITY OF ZAMBOANGA",
+            "DIMATALING",
+            "DINAS",
+            "DUMALINAO",
+            "DUMINGAG",
+            "GUIPOS",
+            "JOSEFINA",
+            "KUMALARANG",
+            "LABANGAN",
+            "LAKEWOOD",
+            "LAPUYAN",
+            "MAHAYAG",
+            "MARGOSATUBIG",
+            "MIDSALIP",
+            "MOLAVE",
+            "PITOGO",
+            "RAMON MAGSAYSAY",
+            "SAN MIGUEL",
+            "SAN PABLO",
+            "SOMINOT",
+            "TABINA",
+            "TAMBULIG",
+            "TIGBAO",
+            "TUKURAN",
+            "VINCENZO A. SAGUN"
+        ],
+        "ZAMBOANGA SIBUGAY": [
+            "ALICIA",
+            "BUUG",
+            "DIPLAHAN",
+            "IMELDA",
+            "IPIL",
+            "KABASALAN",
+            "MABUHAY",
+            "MALANGAS",
+            "NAGA",
+            "OLUTANGA",
+            "PAYAO",
+            "ROSELLER LIM",
+            "SIAY",
+            "TALUSAN",
+            "TITAY",
+            "TUNGAWAN"
+        ]
+    },
+    "all_cities": [
+        "ABORLAN",
+        "ABRA DE ILOG",
+        "ABUCAY",
+        "ABULUG",
+        "ABUYOG",
+        "ADAMS",
+        "AGDANGAN",
+        "AGLIPAY",
+        "AGNO",
+        "AGONCILLO",
+        "AGOO",
+        "AGUILAR",
+        "AGUINALDO",
+        "AGUTAYA",
+        "AJUY",
+        "AKBAR",
+        "ALABAT",
+        "ALABEL",
+        "ALAMADA",
+        "ALAMINOS",
+        "ALANGALANG",
+        "AL-BARKA",
+        "ALBUERA",
+        "ALBURQUERQUE",
+        "ALCALA",
+        "ALCANTARA",
+        "ALCOY",
+        "ALEGRIA",
+        "ALEOSAN",
+        "ALFONSO",
+        "ALFONSO CASTANEDA",
+        "ALFONSO LISTA",
+        "ALIAGA",
+        "ALICIA",
+        "ALILEM",
+        "ALIMODIAN",
+        "ALITAGTAG",
+        "ALLACAPAN",
+        "ALLEN",
+        "ALMAGRO",
+        "ALMERIA",
+        "ALOGUINSAN",
+        "ALORAN",
+        "ALTAVAS",
+        "ALUBIJID",
+        "AMADEO",
+        "AMAI MANABILANG",
+        "AMBAGUIO",
+        "AMLAN",
+        "AMPATUAN",
+        "AMULUNG",
+        "ANAHAWAN",
+        "ANAO",
+        "ANDA",
+        "ANGADANAN",
+        "ANGAT",
+        "ANGONO",
+        "ANILAO",
+        "ANINI-Y",
+        "ANTEQUERA",
+        "ANTIPAS",
+        "APALIT",
+        "APARRI",
+        "ARACELI",
+        "ARAKAN",
+        "ARAYAT",
+        "ARGAO",
+        "ARINGAY",
+        "ARITAO",
+        "AROROY",
+        "ARTECHE",
+        "ASINGAN",
+        "ASIPULO",
+        "ASTURIAS",
+        "ASUNCION",
+        "ATIMONAN",
+        "ATOK",
+        "AURORA",
+        "AYUNGON",
+        "BAAO",
+        "BABATNGON",
+        "BACACAY",
+        "BACARRA",
+        "BACLAYON",
+        "BACNOTAN",
+        "BACO",
+        "BACOLOD",
+        "BACOLOD-KALAWI",
+        "BACOLOR",
+        "BACONG",
+        "BACUAG",
+        "BADIAN",
+        "BADIANGAN",
+        "BADOC",
+        "BAGABAG",
+        "BAGAC",
+        "BAGAMANOC",
+        "BAGANGA",
+        "BAGGAO",
+        "BAGULIN",
+        "BAGUMBAYAN",
+        "BAKUN",
+        "BALABAC",
+        "BALABAGAN",
+        "BALAGTAS",
+        "BALAMBAN",
+        "BALANGIGA",
+        "BALANGKAYAN",
+        "BALAOAN",
+        "BALASAN",
+        "BALATAN",
+        "BALAYAN",
+        "BALBALAN",
+        "BALENO",
+        "BALER",
+        "BALETE",
+        "BALIANGAO",
+        "BALIGUIAN",
+        "BALILIHAN",
+        "BALINDONG",
+        "BALINGASAG",
+        "BALINGOAN",
+        "BALLESTEROS",
+        "BALOI",
+        "BALUD",
+        "BALUNGAO",
+        "BAMBAN",
+        "BAMBANG",
+        "BANATE",
+        "BANAUE",
+        "BANAYBANAY",
+        "BANAYOYO",
+        "BANGA",
+        "BANGAR",
+        "BANGUED",
+        "BANGUI",
+        "BANI",
+        "BANISILAN",
+        "BANNA",
+        "BANSALAN",
+        "BANSUD",
+        "BANTAY",
+        "BANTAYAN",
+        "BANTON",
+        "BARAS",
+        "BARBAZA",
+        "BARCELONA",
+        "BARILI",
+        "BARIRA",
+        "BARLIG",
+        "BAROBO",
+        "BAROTAC NUEVO",
+        "BAROTAC VIEJO",
+        "BAROY",
+        "BARUGO",
+        "BASAY",
+        "BASCO",
+        "BASEY",
+        "BASILISA",
+        "BASISTA",
+        "BASUD",
+        "BATAD",
+        "BATAN",
+        "BATANGAS CITY",
+        "BATARAZA",
+        "BATO",
+        "BATUAN",
+        "BAUAN",
+        "BAUANG",
+        "BAUKO",
+        "BAUNGON",
+        "BAUTISTA",
+        "BAY",
+        "BAYABAS",
+        "BAYAMBANG",
+        "BAYANG",
+        "BAYOG",
+        "BAYOMBONG",
+        "BELISON",
+        "BENITO SOLIVEN",
+        "BESAO",
+        "BIEN UNIDO",
+        "BILAR",
+        "BILIRAN",
+        "BINALBAGAN",
+        "BINALONAN",
+        "BINANGONAN",
+        "BINDOY",
+        "BINGAWAN",
+        "BINIDAYAN",
+        "BINMALEY",
+        "BINONDO",
+        "BINUANGAN",
+        "BIRI",
+        "BOAC",
+        "BOBON",
+        "BOCAUE",
+        "BOKOD",
+        "BOLINAO",
+        "BOLINEY",
+        "BOLJOON",
+        "BOMBON",
+        "BONGABON",
+        "BONGABONG",
+        "BONGAO",
+        "BONIFACIO",
+        "BONTOC",
+        "BORBON",
+        "BOSTON",
+        "BOTOLAN",
+        "BRAULIO E. DUJALI",
+        "BROOKE'S POINT",
+        "BUADIPOSO-BUNTONG",
+        "BUBONG",
+        "BUCAY",
+        "BUCLOC",
+        "BUENAVISTA",
+        "BUGALLON",
+        "BUGASONG",
+        "BUGUEY",
+        "BUGUIAS",
+        "BUHI",
+        "BULA",
+        "BULACAN",
+        "BULALACAO",
+        "BULAN",
+        "BULDON",
+        "BULUAN",
+        "BULUSAN",
+        "BUNAWAN",
+        "BURAUEN",
+        "BURDEOS",
+        "BURGOS",
+        "BURUANGA",
+        "BUSTOS",
+        "BUSUANGA",
+        "BUTIG",
+        "BUUG",
+        "CABA",
+        "CABAGAN",
+        "CABANGAN",
+        "CABANGLASAN",
+        "CABARROGUIS",
+        "CABATUAN",
+        "CABIAO",
+        "CABUCGAYAN",
+        "CABUGAO",
+        "CABUSAO",
+        "CAGAYANCILLO",
+        "CAGDIANAO",
+        "CAGWAIT",
+        "CAIBIRAN",
+        "CAINTA",
+        "CAJIDIOCAN",
+        "CALABANGA",
+        "CALAMBA",
+        "CALANASAN",
+        "CALANOGAS",
+        "CALAPE",
+        "CALASIAO",
+        "CALATAGAN",
+        "CALATRAVA",
+        "CALAUAG",
+        "CALAUAN",
+        "CALAYAN",
+        "CALBIGA",
+        "CALINOG",
+        "CALINTAAN",
+        "CALUBIAN",
+        "CALUMPIT",
+        "CALUYA",
+        "CAMALANIUGAN",
+        "CAMALIG",
+        "CAMALIGAN",
+        "CAMILING",
+        "CANAMAN",
+        "CAN-AVID",
+        "CANDABA",
+        "CANDELARIA",
+        "CANDIJAY",
+        "CANDONI",
+        "CANTILAN",
+        "CAOAYAN",
+        "CAPALONGA",
+        "CAPAS",
+        "CAPOOCAN",
+        "CAPUL",
+        "CARAGA",
+        "CARAMOAN",
+        "CARAMORAN",
+        "CARASI",
+        "CARDONA",
+        "CARIGARA",
+        "CARLES",
+        "CARMEN",
+        "CARRANGLAN",
+        "CARRASCAL",
+        "CASIGURAN",
+        "CASTILLA",
+        "CASTILLEJOS",
+        "CATAINGAN",
+        "CATANAUAN",
+        "CATARMAN",
+        "CATEEL",
+        "CATIGBIAN",
+        "CATMON",
+        "CATUBIG",
+        "CAUAYAN",
+        "CAVINTI",
+        "CAWAYAN",
+        "CERVANTES",
+        "CITY OF ALAMINOS",
+        "CITY OF ANGELES",
+        "CITY OF ANTIPOLO",
+        "CITY OF BACOLOD",
+        "CITY OF BACOOR",
+        "CITY OF BAGO",
+        "CITY OF BAGUIO",
+        "CITY OF BAIS",
+        "CITY OF BALANGA",
+        "CITY OF BALIWAG",
+        "CITY OF BATAC",
+        "CITY OF BAYAWAN",
+        "CITY OF BAYBAY",
+        "CITY OF BAYUGAN",
+        "CITY OF BIÑAN",
+        "CITY OF BISLIG",
+        "CITY OF BOGO",
+        "CITY OF BORONGAN",
+        "CITY OF BUTUAN",
+        "CITY OF CABADBARAN",
+        "CITY OF CABANATUAN",
+        "CITY OF CABUYAO",
+        "CITY OF CADIZ",
+        "CITY OF CAGAYAN DE ORO",
+        "CITY OF CALACA",
+        "CITY OF CALAMBA",
+        "CITY OF CALAPAN",
+        "CITY OF CALBAYOG",
+        "CITY OF CALOOCAN",
+        "CITY OF CANDON",
+        "CITY OF CANLAON",
+        "CITY OF CARCAR",
+        "CITY OF CARMONA",
+        "CITY OF CATBALOGAN",
+        "CITY OF CAUAYAN",
+        "CITY OF CAVITE",
+        "CITY OF CEBU",
+        "CITY OF COTABATO",
+        "CITY OF DAGUPAN",
+        "CITY OF DAPITAN",
+        "CITY OF DASMARIÑAS",
+        "CITY OF DAVAO",
+        "CITY OF DIGOS",
+        "CITY OF DIPOLOG",
+        "CITY OF DUMAGUETE",
+        "CITY OF EL SALVADOR",
+        "CITY OF ESCALANTE",
+        "CITY OF GAPAN",
+        "CITY OF GENERAL SANTOS",
+        "CITY OF GENERAL TRIAS",
+        "CITY OF GINGOOG",
+        "CITY OF GUIHULNGAN",
+        "CITY OF HIMAMAYLAN",
+        "CITY OF ILAGAN",
+        "CITY OF ILIGAN",
+        "CITY OF ILOILO",
+        "CITY OF IMUS",
+        "CITY OF IRIGA",
+        "CITY OF ISABELA",
+        "CITY OF KABANKALAN",
+        "CITY OF KIDAPAWAN",
+        "CITY OF KORONADAL",
+        "CITY OF LA CARLOTA",
+        "CITY OF LAMITAN",
+        "CITY OF LAOAG",
+        "CITY OF LAPU-LAPU",
+        "CITY OF LAS PIÑAS",
+        "CITY OF LEGAZPI",
+        "CITY OF LIGAO",
+        "CITY OF LIPA",
+        "CITY OF LUCENA",
+        "CITY OF MAASIN",
+        "CITY OF MAKATI",
+        "CITY OF MALABON",
+        "CITY OF MALAYBALAY",
+        "CITY OF MALOLOS",
+        "CITY OF MANDALUYONG",
+        "CITY OF MANDAUE",
+        "CITY OF MARAWI",
+        "CITY OF MARIKINA",
+        "CITY OF MASBATE",
+        "CITY OF MATI",
+        "CITY OF MEYCAUAYAN",
+        "CITY OF MUNTINLUPA",
+        "CITY OF NAGA",
+        "CITY OF NAVOTAS",
+        "CITY OF OLONGAPO",
+        "CITY OF OROQUIETA",
+        "CITY OF OZAMIZ",
+        "CITY OF PAGADIAN",
+        "CITY OF PALAYAN",
+        "CITY OF PANABO",
+        "CITY OF PARAÑAQUE",
+        "CITY OF PASIG",
+        "CITY OF PASSI",
+        "CITY OF PUERTO PRINCESA",
+        "CITY OF ROXAS",
+        "CITY OF SAGAY",
+        "CITY OF SAN CARLOS",
+        "CITY OF SAN FERNANDO",
+        "CITY OF SAN JOSE DEL MONTE",
+        "CITY OF SAN JUAN",
+        "CITY OF SAN PABLO",
+        "CITY OF SAN PEDRO",
+        "CITY OF SANTA ROSA",
+        "CITY OF SANTIAGO",
+        "CITY OF SILAY",
+        "CITY OF SIPALAY",
+        "CITY OF SORSOGON",
+        "CITY OF STO. TOMAS",
+        "CITY OF SURIGAO",
+        "CITY OF TABACO",
+        "CITY OF TABUK",
+        "CITY OF TACLOBAN",
+        "CITY OF TACURONG",
+        "CITY OF TAGAYTAY",
+        "CITY OF TAGBILARAN",
+        "CITY OF TAGUIG",
+        "CITY OF TAGUM",
+        "CITY OF TALISAY",
+        "CITY OF TANAUAN",
+        "CITY OF TANDAG",
+        "CITY OF TANGUB",
+        "CITY OF TANJAY",
+        "CITY OF TARLAC",
+        "CITY OF TAYABAS",
+        "CITY OF TOLEDO",
+        "CITY OF TRECE MARTIRES",
+        "CITY OF URDANETA",
+        "CITY OF VALENCIA",
+        "CITY OF VALENZUELA",
+        "CITY OF VICTORIAS",
+        "CITY OF VIGAN",
+        "CITY OF ZAMBOANGA",
+        "CLARIN",
+        "CLAVER",
+        "CLAVERIA",
+        "COLUMBIO",
+        "COMPOSTELA",
+        "CONCEPCION",
+        "CONNER",
+        "CONSOLACION",
+        "CORCUERA",
+        "CORDON",
+        "CORDOVA",
+        "CORELLA",
+        "CORON",
+        "CORTES",
+        "CUARTERO",
+        "CUENCA",
+        "CULABA",
+        "CULASI",
+        "CULION",
+        "CURRIMAO",
+        "CUYAPO",
+        "CUYO",
+        "DAANBANTAYAN",
+        "DAET",
+        "DAGAMI",
+        "DAGOHOY",
+        "DAGUIOMAN",
+        "DALAGUETE",
+        "DAMULOG",
+        "DANAO",
+        "DANAO CITY",
+        "DANGCAGAN",
+        "DANGLAS",
+        "DAO",
+        "DAPA",
+        "DARAGA",
+        "DARAM",
+        "DASOL",
+        "DATU ABDULLAH SANGKI",
+        "DATU ANGGAL MIDTIMBANG",
+        "DATU BLAH T. SINSUAT",
+        "DATU HOFFER AMPATUAN",
+        "DATU ODIN SINSUAT",
+        "DATU PAGLAS",
+        "DATU PIANG",
+        "DATU SALIBO",
+        "DATU SAUDI AMPATUAN",
+        "DATU UNSAY",
+        "DAUIN",
+        "DAUIS",
+        "DEL CARMEN",
+        "DEL GALLEGO",
+        "DELFIN ALBANO",
+        "DIADI",
+        "DIFFUN",
+        "DILASAG",
+        "DIMASALANG",
+        "DIMATALING",
+        "DIMIAO",
+        "DINAGAT",
+        "DINALUNGAN",
+        "DINALUPIHAN",
+        "DINAPIGUE",
+        "DINAS",
+        "DINGALAN",
+        "DINGLE",
+        "DINGRAS",
+        "DIPACULAO",
+        "DIPLAHAN",
+        "DITSAAN-RAMAIN",
+        "DIVILACAN",
+        "DOLORES",
+        "DON CARLOS",
+        "DON MARCELINO",
+        "DON VICTORIANO CHIONGBIAN",
+        "DOÑA REMEDIOS TRINIDAD",
+        "DONSOL",
+        "DR. JOSE P. RIZAL",
+        "DUEÑAS",
+        "DUERO",
+        "DULAG",
+        "DUMALAG",
+        "DUMALINAO",
+        "DUMALNEG",
+        "DUMANGAS",
+        "DUMANJUG",
+        "DUMARAN",
+        "DUMARAO",
+        "DUMINGAG",
+        "DUPAX DEL NORTE",
+        "DUPAX DEL SUR",
+        "ECHAGUE",
+        "EL NIDO",
+        "ENRILE",
+        "ENRIQUE B. MAGALONA",
+        "ENRIQUE VILLANUEVA",
+        "ERMITA",
+        "ESPERANZA",
+        "ESTANCIA",
+        "FAMY",
+        "FERROL",
+        "FLORA",
+        "FLORIDABLANCA",
+        "GABALDON",
+        "GAINZA",
+        "GALIMUYOD",
+        "GAMAY",
+        "GAMU",
+        "GANASSI",
+        "GANDARA",
+        "GARCHITORENA",
+        "GARCIA HERNANDEZ",
+        "GASAN",
+        "GATTARAN",
+        "GEN. MARIANO ALVAREZ",
+        "GEN. S.K. PENDATUN",
+        "GENERAL EMILIO AGUINALDO",
+        "GENERAL LUNA",
+        "GENERAL MACARTHUR",
+        "GENERAL MAMERTO NATIVIDAD",
+        "GENERAL NAKAR",
+        "GENERAL TINIO",
+        "GERONA",
+        "GETAFE",
+        "GIGAQUIT",
+        "GIGMOTO",
+        "GINATILAN",
+        "GIPORLOS",
+        "GITAGUM",
+        "GLAN",
+        "GLORIA",
+        "GOA",
+        "GODOD",
+        "GONZAGA",
+        "GOVERNOR GENEROSO",
+        "GREGORIO DEL PILAR",
+        "GUAGUA",
+        "GUBAT",
+        "GUIGUINTO",
+        "GUIMBA",
+        "GUIMBAL",
+        "GUINAYANGAN",
+        "GUINDULMAN",
+        "GUINDULUNGAN",
+        "GUINOBATAN",
+        "GUINSILIBAN",
+        "GUIPOS",
+        "GUIUAN",
+        "GUMACA",
+        "GUTALAC",
+        "HADJI MOHAMMAD AJUL",
+        "HADJI MUHTAMAD",
+        "HADJI PANGLIMA TAHIL",
+        "HAGONOY",
+        "HAMTIC",
+        "HERMOSA",
+        "HERNANI",
+        "HILONGOS",
+        "HINABANGAN",
+        "HINATUAN",
+        "HINDANG",
+        "HINGYON",
+        "HINIGARAN",
+        "HINOBA-AN",
+        "HINUNANGAN",
+        "HINUNDAYAN",
+        "HUNGDUAN",
+        "IBA",
+        "IBAAN",
+        "IBAJAY",
+        "IGBARAS",
+        "IGUIG",
+        "ILOG",
+        "IMELDA",
+        "IMPASUG-ONG",
+        "INABANGA",
+        "INDANAN",
+        "INDANG",
+        "INFANTA",
+        "INITAO",
+        "INOPACAN",
+        "INTRAMUROS",
+        "IPIL",
+        "IROSIN",
+        "ISABEL",
+        "ISABELA",
+        "ISLAND GARDEN CITY OF SAMAL",
+        "ISULAN",
+        "ITBAYAT",
+        "ITOGON",
+        "IVANA",
+        "IVISAN",
+        "JABONGA",
+        "JAEN",
+        "JAGNA",
+        "JALA-JALA",
+        "JAMINDAN",
+        "JANIUAY",
+        "JARO",
+        "JASAAN",
+        "JAVIER",
+        "JIABONG",
+        "JIMALALUD",
+        "JIMENEZ",
+        "JIPAPAD",
+        "JOLO",
+        "JOMALIG",
+        "JONES",
+        "JORDAN",
+        "JOSE ABAD SANTOS",
+        "JOSE DALMAN",
+        "JOSE PANGANIBAN",
+        "JOSEFINA",
+        "JOVELLAR",
+        "JUBAN",
+        "JULITA",
+        "KABACAN",
+        "KABASALAN",
+        "KABAYAN",
+        "KABUGAO",
+        "KABUNTALAN",
+        "KADINGILAN",
+        "KALAMANSIG",
+        "KALAWIT",
+        "KALAYAAN",
+        "KALIBO",
+        "KALILANGAN",
+        "KALINGALAN CALUANG",
+        "KANANGA",
+        "KAPAI",
+        "KAPALONG",
+        "KAPANGAN",
+        "KAPATAGAN",
+        "KASIBU",
+        "KATIPUNAN",
+        "KAUSWAGAN",
+        "KAWAYAN",
+        "KAWIT",
+        "KAYAPA",
+        "KIAMBA",
+        "KIANGAN",
+        "KIBAWE",
+        "KIBLAWAN",
+        "KIBUNGAN",
+        "KINOGUITAN",
+        "KITAOTAO",
+        "KITCHARAO",
+        "KOLAMBUGAN",
+        "KUMALARANG",
+        "LA CASTELLANA",
+        "LA LIBERTAD",
+        "LA PAZ",
+        "LA TRINIDAD",
+        "LAAK",
+        "LABANGAN",
+        "LABASON",
+        "LABO",
+        "LABRADOR",
+        "LACUB",
+        "LAGANGILANG",
+        "LAGAWE",
+        "LAGAYAN",
+        "LAGONGLONG",
+        "LAGONOY",
+        "LAGUINDINGAN",
+        "LAKE SEBU",
+        "LAKEWOOD",
+        "LALA",
+        "LAL-LO",
+        "LAMBAYONG",
+        "LAMBUNAO",
+        "LAMUT",
+        "LANGIDEN",
+        "LANGUYAN",
+        "LANTAPAN",
+        "LANTAWAN",
+        "LANUZA",
+        "LAOAC",
+        "LAOANG",
+        "LAPINIG",
+        "LAPUYAN",
+        "LARENA",
+        "LAS NAVAS",
+        "LAS NIEVES",
+        "LASAM",
+        "LAUA-AN",
+        "LAUR",
+        "LAUREL",
+        "LAVEZARES",
+        "LAWAAN",
+        "LAZI",
+        "LEBAK",
+        "LEGANES",
+        "LEMERY",
+        "LEON",
+        "LEON T. POSTIGO",
+        "LEYTE",
+        "LEZO",
+        "LIAN",
+        "LIANGA",
+        "LIBACAO",
+        "LIBAGON",
+        "LIBERTAD",
+        "LIBJO",
+        "LIBMANAN",
+        "LIBON",
+        "LIBONA",
+        "LIBUNGAN",
+        "LICAB",
+        "LICUAN-BAAY",
+        "LIDLIDDA",
+        "LILA",
+        "LILIW",
+        "LILOAN",
+        "LILOY",
+        "LIMASAWA",
+        "LIMAY",
+        "LINAMON",
+        "LINAPACAN",
+        "LINGAYEN",
+        "LINGIG",
+        "LLANERA",
+        "LLORENTE",
+        "LOAY",
+        "LOBO",
+        "LOBOC",
+        "LOOC",
+        "LOON",
+        "LOPE DE VEGA",
+        "LOPEZ",
+        "LOPEZ JAENA",
+        "LORETO",
+        "LOS BAÑOS",
+        "LUBA",
+        "LUBANG",
+        "LUBAO",
+        "LUBUAGAN",
+        "LUCBAN",
+        "LUGAIT",
+        "LUGUS",
+        "LUISIANA",
+        "LUMBA-BAYABAO",
+        "LUMBACA-UNAYAN",
+        "LUMBAN",
+        "LUMBATAN",
+        "LUMBAYANAGUE",
+        "LUNA",
+        "LUPAO",
+        "LUPI",
+        "LUPON",
+        "LUTAYAN",
+        "LUUK",
+        "MAASIM",
+        "MAASIN",
+        "MA-AYON",
+        "MABALACAT CITY",
+        "MABINAY",
+        "MABINI",
+        "MABITAC",
+        "MABUHAY",
+        "MACABEBE",
+        "MACALELON",
+        "MACARTHUR",
+        "MACO",
+        "MACONACON",
+        "MACROHON",
+        "MADALAG",
+        "MADALUM",
+        "MADAMBA",
+        "MADDELA",
+        "MADRID",
+        "MADRIDEJOS",
+        "MAGALANG",
+        "MAGALLANES",
+        "MAGARAO",
+        "MAGDALENA",
+        "MAGDIWANG",
+        "MAGPET",
+        "MAGSAYSAY",
+        "MAGSINGAL",
+        "MAGUING",
+        "MAHAPLAG",
+        "MAHATAO",
+        "MAHAYAG",
+        "MAHINOG",
+        "MAIGO",
+        "MAIMBUNG",
+        "MAINIT",
+        "MAITUM",
+        "MAJAYJAY",
+        "MAKATO",
+        "MAKILALA",
+        "MALABANG",
+        "MALABUYOC",
+        "MALALAG",
+        "MALANGAS",
+        "MALAPATAN",
+        "MALASIQUI",
+        "MALATE",
+        "MALAY",
+        "MALIBCONG",
+        "MALILIPOT",
+        "MALIMONO",
+        "MALINAO",
+        "MALITA",
+        "MALITBOG",
+        "MALLIG",
+        "MALUNGON",
+        "MALUSO",
+        "MALVAR",
+        "MAMASAPANO",
+        "MAMBAJAO",
+        "MAMBURAO",
+        "MAMBUSAO",
+        "MANABO",
+        "MANAOAG",
+        "MANAPLA",
+        "MANAY",
+        "MANDAON",
+        "MANGALDAN",
+        "MANGATAREM",
+        "MANGUDADATU",
+        "MANITO",
+        "MANJUYOD",
+        "MANKAYAN",
+        "MANOLO FORTICH",
+        "MANSALAY",
+        "MANTICAO",
+        "MANUKAN",
+        "MAPANAS",
+        "MAPANDAN",
+        "MAPUN",
+        "MARABUT",
+        "MARAGONDON",
+        "MARAGUSAN",
+        "MARAMAG",
+        "MARANTAO",
+        "MARCOS",
+        "MARGOSATUBIG",
+        "MARIA",
+        "MARIA AURORA",
+        "MARIBOJOC",
+        "MARIHATAG",
+        "MARILAO",
+        "MARIPIPI",
+        "MARIVELES",
+        "MAROGONG",
+        "MASANTOL",
+        "MASINLOC",
+        "MASIU",
+        "MASLOG",
+        "MATAASNAKAHOY",
+        "MATAG-OB",
+        "MATALAM",
+        "MATALOM",
+        "MATANAO",
+        "MATANOG",
+        "MATNOG",
+        "MATUGUINAO",
+        "MATUNGAO",
+        "MAUBAN",
+        "MAWAB",
+        "MAYANTOC",
+        "MAYDOLONG",
+        "MAYORGA",
+        "MAYOYAO",
+        "MEDELLIN",
+        "MEDINA",
+        "MENDEZ",
+        "MERCEDES",
+        "MERIDA",
+        "MEXICO",
+        "MIAGAO",
+        "MIDSALIP",
+        "MIDSAYAP",
+        "MILAGROS",
+        "MILAOR",
+        "MINA",
+        "MINALABAC",
+        "MINALIN",
+        "MINGLANILLA",
+        "M'LANG",
+        "MOALBOAL",
+        "MOBO",
+        "MOGPOG",
+        "MOISES PADILLA",
+        "MOLAVE",
+        "MONCADA",
+        "MONDRAGON",
+        "MONKAYO",
+        "MONREAL",
+        "MONTEVISTA",
+        "MORONG",
+        "MOTIONG",
+        "MULANAY",
+        "MULONDO",
+        "MUNAI",
+        "MURCIA",
+        "MUTIA",
+        "NAAWAN",
+        "NABAS",
+        "NABUA",
+        "NABUNTURAN",
+        "NAGA",
+        "NAGBUKEL",
+        "NAGCARLAN",
+        "NAGTIPUNAN",
+        "NAGUILIAN",
+        "NAIC",
+        "NAMPICUAN",
+        "NARRA",
+        "NARVACAN",
+        "NASIPIT",
+        "NASUGBU",
+        "NATIVIDAD",
+        "NATONIN",
+        "NAUJAN",
+        "NAVAL",
+        "NEW BATAAN",
+        "NEW CORELLA",
+        "NEW LUCENA",
+        "NEW WASHINGTON",
+        "NORALA",
+        "NORTHERN KABUNTALAN",
+        "NORZAGARAY",
+        "NOVELETA",
+        "NUEVA ERA",
+        "NUEVA VALENCIA",
+        "NUMANCIA",
+        "NUNUNGAN",
+        "OAS",
+        "OBANDO",
+        "OCAMPO",
+        "ODIONGAN",
+        "OLD PANAMAO",
+        "OLUTANGA",
+        "OMAR",
+        "OPOL",
+        "ORANI",
+        "ORAS",
+        "ORION",
+        "ORMOC CITY",
+        "OSLOB",
+        "OTON",
+        "PACO",
+        "PADADA",
+        "PADRE BURGOS",
+        "PADRE GARCIA",
+        "PAETE",
+        "PAGAGAWAN",
+        "PAGALUNGAN",
+        "PAGAYAWAN",
+        "PAGBILAO",
+        "PAGLAT",
+        "PAGSANGHAN",
+        "PAGSANJAN",
+        "PAGUDPUD",
+        "PAKIL",
+        "PALANAN",
+        "PALANAS",
+        "PALAPAG",
+        "PALAUIG",
+        "PALIMBANG",
+        "PALO",
+        "PALOMPON",
+        "PALUAN",
+        "PAMBUJAN",
+        "PAMPLONA",
+        "PANAON",
+        "PANAY",
+        "PANDACAN",
+        "PANDAG",
+        "PANDAMI",
+        "PANDAN",
+        "PANDI",
+        "PANGANIBAN",
+        "PANGANTUCAN",
+        "PANGIL",
+        "PANGLAO",
+        "PANGLIMA ESTINO",
+        "PANGLIMA SUGALA",
+        "PANGUTARAN",
+        "PANIQUI",
+        "PANITAN",
+        "PANTABANGAN",
+        "PANTAO RAGAT",
+        "PANTAR",
+        "PANTUKAN",
+        "PANUKULAN",
+        "PAOAY",
+        "PAOMBONG",
+        "PARACALE",
+        "PARACELIS",
+        "PARANAS",
+        "PARANG",
+        "PASACAO",
+        "PASAY CITY",
+        "PASIL",
+        "PASTRANA",
+        "PASUQUIN",
+        "PATA",
+        "PATEROS",
+        "PATIKUL",
+        "PATNANUNGAN",
+        "PATNONGON",
+        "PAVIA",
+        "PAYAO",
+        "PEÑABLANCA",
+        "PEÑARANDA",
+        "PEÑARRUBIA",
+        "PEREZ",
+        "PIAGAPO",
+        "PIAT",
+        "PICONG",
+        "PIDDIG",
+        "PIDIGAN",
+        "PIGKAWAYAN",
+        "PIKIT",
+        "PILA",
+        "PILAR",
+        "PILI",
+        "PILILLA",
+        "PINABACDAO",
+        "PINAMALAYAN",
+        "PINAMUNGAJAN",
+        "PIÑAN",
+        "PINILI",
+        "PINTUYAN",
+        "PINUKPUK",
+        "PIO DURAN",
+        "PIO V. CORPUS",
+        "PITOGO",
+        "PLACER",
+        "PLARIDEL",
+        "POLA",
+        "POLANCO",
+        "POLANGUI",
+        "POLILLO",
+        "POLOMOLOK",
+        "PONTEVEDRA",
+        "POONA BAYABAO",
+        "POONA PIAGAPO",
+        "PORAC",
+        "PORO",
+        "PORT AREA",
+        "POTOTAN",
+        "POZORRUBIO",
+        "PRES. MANUEL A. ROXAS",
+        "PRESENTACION",
+        "PRESIDENT CARLOS P. GARCIA",
+        "PRESIDENT QUIRINO",
+        "PRESIDENT ROXAS",
+        "PRIETO DIAZ",
+        "PROSPERIDAD",
+        "PUALAS",
+        "PUDTOL",
+        "PUERTO GALERA",
+        "PUGO",
+        "PULILAN",
+        "PULUPANDAN",
+        "PURA",
+        "QUEZON",
+        "QUEZON CITY",
+        "QUIAPO",
+        "QUINAPONDAN",
+        "QUIRINO",
+        "RAGAY",
+        "RAJAH BUAYAN",
+        "RAMON",
+        "RAMON MAGSAYSAY",
+        "RAMOS",
+        "RAPU-RAPU",
+        "REAL",
+        "REINA MERCEDES",
+        "REMEDIOS T. ROMUALDEZ",
+        "RIZAL",
+        "RODRIGUEZ",
+        "ROMBLON",
+        "RONDA",
+        "ROSALES",
+        "ROSARIO",
+        "ROSELLER LIM",
+        "ROXAS",
+        "SABANGAN",
+        "SABLAN",
+        "SABLAYAN",
+        "SABTANG",
+        "SADANGA",
+        "SAGADA",
+        "SAGAY",
+        "SAGBAYAN",
+        "SAGÑAY",
+        "SAGUDAY",
+        "SAGUIARAN",
+        "SAINT BERNARD",
+        "SALAY",
+        "SALCEDO",
+        "SALLAPADAN",
+        "SALUG",
+        "SALVADOR",
+        "SALVADOR BENEDICTO",
+        "SAMAL",
+        "SAMBOAN",
+        "SAMPALOC",
+        "SAN AGUSTIN",
+        "SAN ANDRES",
+        "SAN ANTONIO",
+        "SAN BENITO",
+        "SAN CLEMENTE",
+        "SAN DIONISIO",
+        "SAN EMILIO",
+        "SAN ENRIQUE",
+        "SAN ESTEBAN",
+        "SAN FABIAN",
+        "SAN FELIPE",
+        "SAN FERNANDO",
+        "SAN FRANCISCO",
+        "SAN GABRIEL",
+        "SAN GUILLERMO",
+        "SAN ILDEFONSO",
+        "SAN ISIDRO",
+        "SAN JACINTO",
+        "SAN JOAQUIN",
+        "SAN JORGE",
+        "SAN JOSE",
+        "SAN JOSE CITY",
+        "SAN JOSE DE BUAN",
+        "SAN JUAN",
+        "SAN JULIAN",
+        "SAN LEONARDO",
+        "SAN LORENZO",
+        "SAN LORENZO RUIZ",
+        "SAN LUIS",
+        "SAN MANUEL",
+        "SAN MARCELINO",
+        "SAN MARIANO",
+        "SAN MATEO",
+        "SAN MIGUEL",
+        "SAN NARCISO",
+        "SAN NICOLAS",
+        "SAN PABLO",
+        "SAN PASCUAL",
+        "SAN POLICARPO",
+        "SAN QUINTIN",
+        "SAN RAFAEL",
+        "SAN REMIGIO",
+        "SAN RICARDO",
+        "SAN ROQUE",
+        "SAN SEBASTIAN",
+        "SAN SIMON",
+        "SAN TEODORO",
+        "SAN VICENTE",
+        "SANCHEZ-MIRA",
+        "SANTA",
+        "SANTA ANA",
+        "SANTA BARBARA",
+        "SANTA CATALINA",
+        "SANTA CRUZ",
+        "SANTA ELENA",
+        "SANTA FE",
+        "SANTA IGNACIA",
+        "SANTA JOSEFA",
+        "SANTA LUCIA",
+        "SANTA MAGDALENA",
+        "SANTA MARCELA",
+        "SANTA MARGARITA",
+        "SANTA MARIA",
+        "SANTA MONICA",
+        "SANTA PRAXEDES",
+        "SANTA RITA",
+        "SANTA ROSA",
+        "SANTA TERESITA",
+        "SANTANDER",
+        "SANTIAGO",
+        "SANTO DOMINGO",
+        "SANTO NIÑO",
+        "SANTO TOMAS",
+        "SANTOL",
+        "SAPAD",
+        "SAPANG DALAGA",
+        "SAPA-SAPA",
+        "SAPI-AN",
+        "SARA",
+        "SARANGANI",
+        "SARIAYA",
+        "SARRAT",
+        "SASMUAN",
+        "SCIENCE CITY OF MUÑOZ",
+        "SEBASTE",
+        "SEN. NINOY AQUINO",
+        "SERGIO OSMEÑA SR.",
+        "SEVILLA",
+        "SHARIFF AGUAK",
+        "SHARIFF SAYDONA MUSTAPHA",
+        "SIASI",
+        "SIATON",
+        "SIAY",
+        "SIAYAN",
+        "SIBAGAT",
+        "SIBALOM",
+        "SIBONGA",
+        "SIBUCO",
+        "SIBULAN",
+        "SIBUNAG",
+        "SIBUTAD",
+        "SIBUTU",
+        "SIERRA BULLONES",
+        "SIGAY",
+        "SIGMA",
+        "SIKATUNA",
+        "SILAGO",
+        "SILANG",
+        "SILVINO LOBOS",
+        "SIMUNUL",
+        "SINACABAN",
+        "SINAIT",
+        "SINDANGAN",
+        "SINILOAN",
+        "SIOCON",
+        "SIPOCOT",
+        "SIQUIJOR",
+        "SIRAWAI",
+        "SIRUMA",
+        "SISON",
+        "SITANGKAI",
+        "SOCORRO",
+        "SOFRONIO ESPAÑOLA",
+        "SOGOD",
+        "SOLANA",
+        "SOLANO",
+        "SOLSONA",
+        "SOMINOT",
+        "SOUTH UBIAN",
+        "SOUTH UPI",
+        "STO. TOMAS",
+        "SUAL",
+        "SUBIC",
+        "SUDIPEN",
+        "SUGBONGCOGON",
+        "SUGPON",
+        "SULAT",
+        "SULOP",
+        "SULTAN DUMALONDONG",
+        "SULTAN KUDARAT",
+        "SULTAN MASTURA",
+        "SULTAN NAGA DIMAPORO",
+        "SULTAN SA BARONGIS",
+        "SUMILAO",
+        "SUMISIP",
+        "SURALLAH",
+        "SUYO",
+        "TAAL",
+        "TABANGO",
+        "TABINA",
+        "TABOGON",
+        "TABONTABON",
+        "TABUAN-LASA",
+        "TABUELAN",
+        "TADIAN",
+        "TAFT",
+        "TAGANA-AN",
+        "TAGAPUL-AN",
+        "TAGBINA",
+        "TAGKAWAYAN",
+        "TAGO",
+        "TAGOLOAN",
+        "TAGOLOAN II",
+        "TAGUDIN",
+        "TALACOGON",
+        "TALAINGOD",
+        "TALAKAG",
+        "TALALORA",
+        "TALAVERA",
+        "TALAYAN",
+        "TALIBON",
+        "TALIPAO",
+        "TALISAY",
+        "TALISAYAN",
+        "TALITAY",
+        "TALUGTUG",
+        "TALUSAN",
+        "TAMBULIG",
+        "TAMPAKAN",
+        "TAMPARAN",
+        "TAMPILISAN",
+        "TANAUAN",
+        "TANAY",
+        "TANDUBAS",
+        "TANGALAN",
+        "TANGCAL",
+        "TANTANGAN",
+        "TANUDAN",
+        "TANZA",
+        "TAPAZ",
+        "TAPUL",
+        "TARAKA",
+        "TARANGNAN",
+        "TARRAGONA",
+        "TAYASAN",
+        "TAYSAN",
+        "TAYTAY",
+        "TAYUG",
+        "TAYUM",
+        "T'BOLI",
+        "TERESA",
+        "TERNATE",
+        "TIAONG",
+        "TIBIAO",
+        "TIGAON",
+        "TIGBAO",
+        "TIGBAUAN",
+        "TINAMBAC",
+        "TINEG",
+        "TINGLAYAN",
+        "TINGLOY",
+        "TINOC",
+        "TIPO-TIPO",
+        "TITAY",
+        "TIWI",
+        "TOBIAS FORNIER",
+        "TOBOSO",
+        "TOLOSA",
+        "TOMAS OPPUS",
+        "TONDO I/II",
+        "TONGKIL",
+        "TORRIJOS",
+        "TRENTO",
+        "TRINIDAD",
+        "TUAO",
+        "TUBA",
+        "TUBAJON",
+        "TUBAO",
+        "TUBARAN",
+        "TUBAY",
+        "TUBIGON",
+        "TUBLAY",
+        "TUBO",
+        "TUBOD",
+        "TUBUNGAN",
+        "TUBURAN",
+        "TUDELA",
+        "TUGAYA",
+        "TUGUEGARAO CITY",
+        "TUKURAN",
+        "TULUNAN",
+        "TUMAUINI",
+        "TUNGA",
+        "TUNGAWAN",
+        "TUPI",
+        "TURTLE ISLANDS",
+        "TUY",
+        "UBAY",
+        "UMINGAN",
+        "UNGKAYA PUKAN",
+        "UNISAN",
+        "UPI",
+        "URBIZTONDO",
+        "USON",
+        "UYUGAN",
+        "VALDERRAMA",
+        "VALENCIA",
+        "VALLADOLID",
+        "VALLEHERMOSO",
+        "VERUELA",
+        "VICTORIA",
+        "VIGA",
+        "VILLABA",
+        "VILLANUEVA",
+        "VILLAREAL",
+        "VILLASIS",
+        "VILLAVERDE",
+        "VILLAVICIOSA",
+        "VINCENZO A. SAGUN",
+        "VINTAR",
+        "VINZONS",
+        "VIRAC",
+        "WAO",
+        "ZAMBOANGUITA",
+        "ZARAGOZA",
+        "ZARRAGA",
+        "ZUMARRAGA"
+    ],
+    "source_dim_location": "data/mapping/dim_location_20260316_v2.csv"
+}
